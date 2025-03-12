@@ -358,6 +358,22 @@ int main(){
     std::string cuota = "cuota";
     std::string tipoProductos = "productos";
     std::string salir  = "salir";
+    const int horaC=20;
+    const int diaC=80;
+    const int semanaC=500;
+    const int mesC=2050;
+    const int anualC=25000;
+    const int horaM=20;
+    const int diaM=50;
+    const int semanaM=300;
+    const int mesM=1200;
+    const int anualM=14000;
+    const int horaB=20;
+    const int diaB=40;
+    const int semanaB=200;
+    const int mesB=800;
+    const int anualB=9500;
+    int cuotatotal = 0;
   
     while(opcion != salir){
         cout << string(ancho * 60, '-') << endl;
@@ -402,8 +418,52 @@ int main(){
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
             cout << "Selecciona una cuota" << endl;
             cin >> a;
+            if (
+                a==1 
+            ){
+                cout << "Su cargo es de 20 pesos"  << endl;
+                cuotatotal=cuotatotal+horaC ;
+            }
+            else if(
+                a==2
+            ){
+                cout << "Su cargo es de 80 pesos" << endl;
+                cuotatotal=cuotatotal+diaC;
+            }
+            else if (
+                a==3
+            ){
+                cout << "Su cargo es de 500 pesos" << endl;
+                cuotatotal=cuotatotal+semanaC;
+            
+            }
+            else if (
+                a==4
+            ){
+                cout << "Su cargo es de 2,050 pesos" << endl;
+                cuotatotal=cuotatotal+mesC;
+            }
+            else if (
+                a==5
+            ){
+                cout << "Su cargo es de 25,000 pesos" << endl;
+                cuotatotal=cuotatotal+anualC;
+            }
+        
+        
+           
+        cout << "Quieres finalizar tu compra" << endl;
+        cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+        cin >> eleccion;
 
-        }else if(tipoTransporte == 2 ){
+        if(eleccion == si){
+            cout << cuotatotal << endl;
+            cuotatotal = 0;
+        }
+    
+            
+         }
+         else if(tipoTransporte == 2 ){
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
             cout << string(ancho * 1, '|') <<  setw(ancho) << "Motocicletas" << endl;
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
@@ -419,8 +479,49 @@ int main(){
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
             cout << "Selecciona una cuota" << endl;
             cin >> a;
+             if (
+                a==1 
+            ){
+                cout << "Su cargo es de 20 pesos" << endl;
+                cuotatotal=cuotatotal+horaM;
+            }
+            else if(
+                a==2
+            ){
+                cout << "Su cargo es de 50 pesos" << endl;
+                cuotatotal=cuotatotal+diaM;
+            }
+            else if (
+                a==3
+            ){
+                cout << "Su cargo es de 300 pesos" << endl;
+                cuotatotal=cuotatotal+semanaM;
             
-        }else if(tipoTransporte == 3){
+            }
+            else if (
+                a==4
+            ){
+                cout << "Su cargo es de 1,200 pesos" << endl;
+                cuotatotal=cuotatotal+mesM;
+            }
+            else if (
+                a==5
+            ){
+                cout << "Su cargo es de 14,000 pesos" << endl;
+                cuotatotal=cuotatotal+anualM;
+            }
+            
+    cout << "Quieres finalizar tu compra" << endl;
+        cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+        cin >> eleccion;
+
+        if(eleccion == si){
+            cout << cuotatotal << endl;
+            cuotatotal = 0;
+        }
+    
+         }
+         else if(tipoTransporte == 3){
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
             cout << string(ancho * 1, '|') << "Bicicletas" << endl;
             cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
@@ -435,8 +536,47 @@ int main(){
             cout << string(ancho * 1, '|') << "5) Cobro anual 9,500 pesos" << endl;
             cout << "Selecciona una cuota" << endl;
             cin >> a;
-             
+              if (
+                a==1 
+            ){
+                cout << "Su cargo es de 20 pesos";
+                cuotatotal=cuotatotal+horaB;
+            }
+            else if(
+                a==2
+            ){
+                cout << "Su cargo es de 40 pesos";
+                cuotatotal=cuotatotal+diaB;
+            }
+            else if (
+                a==3
+            ){
+                cout << "Su cargo es de 200 pesos";
+                cuotatotal=cuotatotal+semanaB;
+            
+            }
+            else if (
+                a==4
+            ){
+                cout << "Su cargo es de 800 pesos";
+                cuotatotal=cuotatotal+mesB;
+            }
+            else if (
+                a==5
+            ){
+                cout << "Su cargo es de 9,500 pesos";
+                cuotatotal=cuotatotal+anualB;
+            }
     
+    cout << "Quieres finalizar tu compra" << endl;
+        cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+        cin >> eleccion;
+
+        if(eleccion == si){
+            cout << cuotatotal << endl;
+            cuotatotal = 0;
+        }
+
         }
 
     //Aqui empieza la seccion de productos
