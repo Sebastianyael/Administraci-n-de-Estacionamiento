@@ -324,13 +324,192 @@ double Cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0,
         cout << "Cuantas piezas deseas comprar? " << endl;
         cin >> piezas;
         sumatoria = (se.at(codigo) * piezas) + sumatoria;
-        cout << sumatoria;
         cout << "Quieres comprar otro producto de esta seccion" << endl;
         cin >> eleccion;
        
 
     }
     
+    cout << "El total a pagar es: " << sumatoria << endl;
+    cout << "Quieres finalizar tu compra?" << endl;
+    cout << "NOTA al finalizar tu compra se mostraran el total de todos los productos" << endl;
+    cin >> eleccion;
+
+    if(eleccion == si){
+        cout << "El total a pagar es: " << sumatoria << endl;
+        cout << "Gracias por tu compra" << endl;
+        sumatoria = 0;
+    }
+    return sumatoria;
+    
+}
+
+void CargaBasica(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Servicio -  Carga Basico" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "90 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 50% 6 horas" << endl;
+    cout << "2) " << "180 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 100% 12 horas" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+}
+
+void CargaMedia(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Servicio - Carga Media" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "180 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 50% 4 horas." << endl;
+    cout << "2) " << "360 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 100% 8 horas." << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void CargaAlta(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Servicio carga" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "3) " << "250 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 50% 30 minutos." << endl;
+    cout << "2) " << "500 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga 100% 1 hora." << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+}
+
+void AparcarmientoExpress(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Parking Cercano o lejano" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "60 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Servicio de valet parking - Cercano. Ideal si tienes prisa. " << endl;
+    cout << "2) " << "150 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Servicio de valet parking - Lejano. Ideal si vas con tiempo. " << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void AparcamientoDos(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Parking Nocturno" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "100 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Servicio de valet parking nocturno - 6 PM a 12 PM " << endl;
+    cout << "2) " << "200 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Servicio de valet parking nocturno - 6 PM a 6 AM " << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void GasolinaRegular(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Recarga de gasolina REGULAR hasta 5 litros" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "23 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litro de gasolina REGULAR" << endl;
+    cout << "2) " << "46 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litro de gasolina REGULAR" << endl;
+    cout << "3) " << "69 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litro de gasolina REGULAR" << endl;
+    cout << "4) " << "92 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litro de gasolina REGULAR" << endl;
+    cout << "5) " << "115 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litro de gasolina REGULAR" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void GasolinaPremium(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Recarga de gasolina PREMIUM hasta 5 litros" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "26 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litro de gasolina PREMIUM" << endl;
+    cout << "2) " << "52 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litro de gasolina PREMIUM" << endl;
+    cout << "3) " << "78 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litro de gasolina PREMIUM" << endl;
+    cout << "4) " << "104 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litro de gasolina PREMIUM" << endl;
+    cout << "4) " << "130 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litro de gasolina PREMIUM" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void GasolinaDiesel(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Recarga de gasolina DIESEL hasta 5 litros" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "27 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litros de gasolina DIESEL" << endl;
+    cout << "2) " << "54 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litros de gasolina DIESEL" << endl;
+    cout << "3) " << "81 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litros de gasolina DIESEL" << endl;
+    cout << "4) " << "108 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litros de gasolina DIESEL" << endl;
+    cout << "4) " << "135 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litros de gasolina DIESEL" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+
+}
+
+void ReservacionSa(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Reserva Sabado - 24 horas" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio estandar" << endl;
+    cout << "2) " << "100 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con cargador EV" << endl;
+    cout << "3) " << "110 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con lugar rotativo" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+
+}
+
+void ReservacionDo(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Rerserva Domingo - 24 horas" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio estandar" << endl;
+    cout << "2) " << "100 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con cargador EV" << endl;
+    cout << "3) " << "110 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con lugar rotativo" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+void BolsasAmano(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Ayuda para cargar bolsas a Mano" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "30 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Carga de 2 bolsas a mano" << endl;
+    cout << "2) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Carga de 4 bolsas a mano" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void BolsasAcarrito(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Ayuda para cargar bolsas en carrito" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Carga de 4 bolsas a mano" << endl;
+    cout << "2) " << "70 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Carga de 6 bolsas en carrito" << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void ResguardoUna(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Resguardo de 1 llave" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "20 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 1 hora." << endl;
+    cout << "2) " << "30 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 2 horas." << endl;
+    cout << "3) " << "50 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 5 horas." << endl;
+    cout << "4) " << "80 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 24 horas." << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void ResguardoDos(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Resguardo de 2 llaves" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "30 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 1 hora." << endl;
+    cout << "2) " << "40 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 2 horas." << endl;
+    cout << "3) " << "60 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 5 horas." << endl;
+    cout << "4) " << "100 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 24 horas." << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+}
+
+void ResguardoTres(int ancho = 1){
+    cout << string(ancho * 5 , ' ') << "Resguardo de 3 o mas llaves" << endl;
+    cout << string(ancho * 30 , '-') << endl;
+    cout << "1) " << "40 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 1 hora." << endl;
+    cout << "2) " << "50 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 2 horas." << endl;
+    cout << "3) " << "70 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 5 horas." << endl;
+    cout << "4) " << "110 MXN"  << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "Resguardo 24 horas." << endl;
+    cout << string(ancho * 5 , ' ') << endl;
+
+
+}
+//Funcion de cobro especificamente para servicios, se utilizo en cada servicio de las tres secciones que  tenemos
+
+double cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0, const string& si = "si", string eleccion = "si" ){
+    double piezas;
+    while(eleccion == si){
+        cout << "Ingresa el numero del servicio que quieras adquirir" << endl;
+        cin >> codigo;
+        cout << "Cuantos servicios deseas adquirir? " << endl;
+        cin >> piezas;
+        sumatoria = (se.at(codigo) * piezas) + sumatoria;
+        cout << sumatoria;
+        cout << "Quieres adquirir otro servicio de esta sección del que ya solicitaste?" << endl;
+        cin >> eleccion;
+
+    }
     cout << "El total a pagar es: " << sumatoria << endl;
     cout << "Quieres finalizar tu compra?" << endl;
     cout << "NOTA al finalizar tu compra se mostraran el total de todos los productos y servicios adquiridos" << endl;
@@ -347,9 +526,12 @@ double Cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0,
 
 
 
+
 int main(){
-    double codigo = 0.0 ,total = 0, produc; 
+    double codigo = 0.0 ,total = 0, produc,servi; 
     int a,ancho = 1,producto,tipoTransporte;
+    int servicio;
+    
 
     std::string eleccion;
     std::string servicios = "servicios";
@@ -615,7 +797,7 @@ int main(){
                 shampoo[4] = 34;
                 Shampoo();
                 total = Cobro(shampoo , total);
-                cout << total  << endl;
+
                             
             }else if(produc == 2){
                 map<int , double> cera;
@@ -625,7 +807,7 @@ int main(){
                 cera[4] = 100;
                 Cera();
                 total = Cobro(cera , total);
-                cout << total << endl;
+                
 
             }else if(produc == 3){
                 map <int , double> Limpiador;
@@ -635,7 +817,7 @@ int main(){
                 Limpiador[4] = 99;
                 limpiador();
                 total = Cobro(Limpiador , total);
-                cout << total << endl;
+                
 
             }else if(produc == 4){
                 map <int, double> limpiadorTapiceria;
@@ -645,7 +827,7 @@ int main(){
                 limpiadorTapiceria[4] = 99;
                 LimpiadorTapiceria();
                 total = Cobro(limpiadorTapiceria , total);
-                cout << total << endl;
+                
 
             }else if(produc == 5){
                 map <int, double> limpiadorCristales;
@@ -655,7 +837,7 @@ int main(){
                 limpiadorCristales[4] = 130;
                 LimpiadorCristales();
                 total = Cobro(limpiadorCristales , total);
-                cout << total << endl;
+                
 
             }else if(produc == 6){
                 map <int, double> ambientadoresAutos;
@@ -665,7 +847,7 @@ int main(){
                 ambientadoresAutos[4] = 80;
                 AmbientadoresAutos();
                 total = Cobro(ambientadoresAutos , total);
-                cout << total << endl;
+               
 
             }else if(produc == 7){
                 map <int, double> limpiadorInteriores;
@@ -675,7 +857,7 @@ int main(){
                 limpiadorInteriores[4] = 190;
                 LimpiadorInteriores();
                 total = Cobro(limpiadorInteriores , total);
-                cout << total << endl;
+                
 
             }else if(produc == 8){
                 map <int, double> esponjasMicrofibra;
@@ -685,7 +867,7 @@ int main(){
                 esponjasMicrofibra[4] = 200;
                 EsponjasMicrofibra();
                 total = Cobro(esponjasMicrofibra , total);
-                cout << total << endl;
+                
 
             }else if(produc == 9){
                 map <int, double> guantesMicrofibra;
@@ -695,7 +877,7 @@ int main(){
                 guantesMicrofibra[4] = 90;
                 GuantesMicrofibra();
                 total = Cobro(guantesMicrofibra , total);
-                cout << total << endl;
+                
 
             }else if(produc == 10){
                 map <int, double> aspiradoraPortatil;
@@ -705,7 +887,7 @@ int main(){
                 aspiradoraPortatil[4] = 950;
                 AspiradoraPortatil();
                 total = Cobro(aspiradoraPortatil , total);
-                cout << total << endl;
+                
 
             }
             
@@ -733,7 +915,7 @@ int main(){
                 aceiteMotor[4] = 110;
                 AceiteMotor();
                 total = Cobro(aceiteMotor, total);
-                cout << total << endl;
+               
                 
             }else if(produc == 2){
                 map<int, double> filtroAceite;
@@ -743,7 +925,7 @@ int main(){
                 filtroAceite[4] = 200;
                 FiltroAceite();
                 total = Cobro(filtroAceite, total);
-                cout << total << endl;
+                
 
             }else if(produc == 3){
                 map<int, double> filtroAire;
@@ -753,7 +935,7 @@ int main(){
                 filtroAire[4] = 290;
                 FiltroAire();
                 total = Cobro(filtroAire, total);
-                cout << total << endl;
+                
 
             }else if(produc == 4){
                 map<int, double> filtroCombustible;
@@ -763,7 +945,7 @@ int main(){
                 filtroCombustible[4] = 380;
                 FiltroCombustible();
                 total = Cobro(filtroCombustible, total);
-                cout << total << endl;
+                
 
             }else if(produc == 5){
                 map<int, double> anticongelante;
@@ -773,7 +955,7 @@ int main(){
                 anticongelante[4] = 280;
                 Anticongelante();
                 total = Cobro(anticongelante, total);
-                cout << total << endl;
+                
 
             }else if(produc == 6){
                 map<int, double> bateriaAutos;
@@ -783,7 +965,7 @@ int main(){
                 bateriaAutos[4] = 3200;
                 BateriaAutos();
                 total = Cobro(bateriaAutos, total);
-                cout << total << endl;
+                
                 
 
             }else if(produc == 7){
@@ -794,7 +976,7 @@ int main(){
                 lubricanteFrenos[4] = 110;
                 LubricanteFrenos();
                 total = Cobro(lubricanteFrenos, total);
-                cout << total << endl;
+               
 
             }else if(produc == 8){
                 map<int, double> limpiadorInyectores;
@@ -804,7 +986,7 @@ int main(){
                 limpiadorInyectores[4] = 170;
                 LimpiadorInyectores();
                 total = Cobro(limpiadorInyectores, total);
-                cout << total << endl;
+                
 
             }else if (produc == 9){
                 map<int, double> liquidoFrenos;
@@ -814,7 +996,7 @@ int main(){
                 liquidoFrenos[4] = 280;
                 LiquidoFrenos();
                 total = Cobro(liquidoFrenos, total);
-                cout << total << endl;
+                
                 
             }else if(produc == 10){
                 map<int, double> liquidoLimpiaparabrisas;
@@ -824,7 +1006,7 @@ int main(){
                 liquidoLimpiaparabrisas[4] = 130;
                 LiquidoLimpiaparabrisas();
                 total = Cobro(liquidoLimpiaparabrisas, total);
-                cout << total << endl;
+                
             }
 
            
@@ -852,7 +1034,7 @@ int main(){
                 pastillasFreno[4] = 420;
                 PastillasFreno();
                 total = Cobro(pastillasFreno , total);
-                cout << total << endl;
+                
 
             }else if(produc == 2){
                 map<int, double> rines;
@@ -862,7 +1044,7 @@ int main(){
                 rines[4] = 3200;
                 Rines();
                 total = Cobro(rines , total);
-                cout << total << endl;
+                
 
             }else if(produc == 3){
                 map<int, double> discosFreno;
@@ -872,7 +1054,7 @@ int main(){
                 discosFreno[4] = 850;
                 DiscosFreno();
                 total = Cobro(discosFreno , total);
-                cout << total << endl;
+               
                 
             }else if(produc == 4){
                 map<int, double> bombasAgua;
@@ -882,7 +1064,7 @@ int main(){
                 bombasAgua[4] = 1600;
                 BombasAgua();
                 total = Cobro(bombasAgua , total);
-                cout << total << endl;
+                
 
             }else if(produc == 5){
                 map<int, double> bujiasRepuesto;
@@ -892,7 +1074,7 @@ int main(){
                 bujiasRepuesto[4] = 110;
                 BujiasRepuesto();
                 total = Cobro(bujiasRepuesto , total);
-                cout << total << endl;
+                
 
             }else if(produc == 6){
                 map<int, double> correasDistribucion;
@@ -902,7 +1084,7 @@ int main(){
                 correasDistribucion[4] = 1200;
                 CorreasDistribucion();
                 total = Cobro(correasDistribucion , total);
-                cout << total << endl;
+               
 
             }else if(produc == 7){
                 map<int, double> bateriasArranque;
@@ -912,7 +1094,7 @@ int main(){
                 bateriasArranque[4] = 3200;
                 BateriasArranque();
                 total = Cobro(bateriasArranque , total);
-                cout << total << endl;
+                
 
             }else if(produc == 8){
                 map<int, double> radiadores;
@@ -922,7 +1104,7 @@ int main(){
                 radiadores[4] = 4500;
                 Radiadores();
                 total = Cobro(radiadores , total);
-                cout << total << endl;
+                
 
             }else if (produc == 9){
                 map<int, double> fusibles;
@@ -932,7 +1114,7 @@ int main(){
                 fusibles[4] = 60;
                 Fusibles();
                 total = Cobro(fusibles , total);
-                cout << total << endl;
+                
                 
             }else if(produc == 10){
                 map<int, double> bombillasRepuesto;
@@ -942,7 +1124,7 @@ int main(){
                 bombillasRepuesto[4] = 200;
                 BombillasRepuesto();
                 total = Cobro(bombillasRepuesto , total);
-                cout << total << endl;
+                
 
             }
             
@@ -950,13 +1132,218 @@ int main(){
 
         //Aqui termina la seccion de productos
 
+
+        //Aqui enpieza la seccion de servicios
+
     }else if(opcion == servicios){
-        cout << "seleccionaste la opcion de servicios" << endl;
+        cout << "1) Energia" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "2) Parking" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "3) Ecorecarga" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "4) Reservacion" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "5) Asistencia" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "6) Resguardo seguros de llaves" << endl;
+        cout << string(ancho * 25, '-') << endl;
+        cout << "Elige una opcion" << endl;
+        cin >> servicio;
+
+        if( servicio == 1 ){
+            cout << string(ancho * 40, '-') << endl;
+            cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Basica del coche." << endl;
+            cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Media del coche." << endl;
+            cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Alta del coche." << endl;
+            cout << string(ancho * 40, '-') << endl;
+            cout << "Que servicio quieres adquirir?" << endl;
+            cin >> servi;
+            if(servi == 1){
+                map<int, double> carga;
+                carga[1] = 90;
+                carga[2] = 180;
+                CargaBasica();
+                total = cobro(carga , total);
+                cout << total  << endl;
+
+            }else if(servi == 2){
+                map<int , double> carga;
+                carga[1] = 180;
+                carga[2] = 360;
+                CargaMedia();
+                total = cobro(carga , total);
+                cout << total << endl;
+
+            }else if(servi == 3){
+                map <int , double> carga;
+                carga[1] = 250;
+                carga[2] = 500;
+                CargaAlta();
+                total = cobro(carga , total);
+                cout << total << endl;
+            }
+
+        }else if(servicio == 2){
+            cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Cercano o lejano" << endl;
+            cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Nocturno" << endl;
+            cout << "¿Que servicio quieres adquirir?" << endl;
+            cin >> servicio;
+             
+            if(servi ==1){
+                map<int, double> cercano;
+                cercano[1] = 60;
+                cercano[2] = 150;
+                AparcarmientoExpress();
+                total = cobro(cercano, total);
+                cout << total << endl;
+
+            }else if(servi == 2){
+                map <int , double> carga;
+                carga[1] = 100;
+                carga[2] = 200;
+                AparcamientoDos();
+                total = cobro(carga , total);
+                cout << total << endl;
+        }
+
+    }else if(servicio == 3){
+        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina REGULAR hasta 5 litros" << endl;
+        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina PREMIUM hasta 5 litros" << endl;
+        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina DIESEL hasta 5 litros" << endl;
+        cout << "¡Que servicio quieres adquirir?" << endl;
+        cin >> servicio;
+         
+        if(servi == 1){
+            map<int, double> litro;
+            litro[1] = 23;
+            litro[2] = 46;
+            litro[3] = 69;
+            litro[4] = 92;
+            litro[5] = 115;
+            GasolinaRegular();
+            total = cobro(litro, total);
+            cout << total << endl;
+
+        }else if(servi == 2){
+            map<int, double> litro;
+            litro[1] = 26;
+            litro[2] = 52;
+            litro[3] = 78;
+            litro[4] = 104;
+            litro[5] = 130;
+            GasolinaPremium();
+            total = cobro(litro, total);
+            cout << total << endl;
+
+        }else if(servi == 3){
+            map<int, double> litro;
+            litro[1] = 27;
+            litro[2] = 54;
+            litro[3] = 81;
+            litro[4] = 108;
+            litro[5] = 135;
+            GasolinaDiesel();
+            total = cobro(litro, total);
+            cout << total << endl;
+        }
+
+
+    }else if(servicio == 4){
+        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Sabado" << endl;
+        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Domingo" << endl;
+        cout << "¿Quieres adquirir el servicio?" << endl;
+        cin >> servicio;
+         
+        if(servi == 1){
+            map<int, double> reserva;
+            reserva[1] = 50;
+            reserva[2] = 100;
+            reserva[3] = 110;
+            ReservacionSa();
+            total = cobro(reserva, total);
+            cout << total << endl;
+
+                     
+        }else if(servi == 2){
+            map<int, double> reserva;
+            reserva[1] = 50;
+            reserva[2] = 100;
+            reserva[3] = 110;
+            ReservacionDo();
+            total = cobro(reserva, total);
+            cout << total << endl;
+        }
+
+        }else if(servicio == 5){
+            cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas a Mano" << endl;
+            cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas en carrito" << endl;
+            cout << "¿Quieres adquirir el servicio?" << endl;
+            cin >> servicio;
+             
+            if(servi == 1){
+                map<int, double> bolsa;
+                bolsa[1] = 30;
+                bolsa[2] = 50;
+                BolsasAmano();
+                total = cobro(bolsa, total);
+                cout << total << endl;
+    
+                         
+            }else if(servi == 2){
+                map<int, double> bolsa;
+                bolsa[1] = 50;
+                bolsa[2] = 70;
+                BolsasAcarrito();
+                total = cobro(bolsa, total);
+                cout << total << endl;
+            }
+
+            }else if(servicio == 6){
+                cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 1 llave" << endl;
+                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 2 llave" << endl;
+                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 3 o más llave" << endl;
+                cout << "¿Quieres adquirir el servicio?" << endl;
+                cin >> servicio;
+                 
+                if(servi == 1){
+                    map<int, double> llave;
+                    llave[1] = 20;
+                    llave[2] = 30;
+                    llave[2] = 50;
+                    llave[2] = 80;
+                    ResguardoUna();
+                    total = cobro(llave, total);
+                    cout << total << endl;
+        
+                             
+                }else if(servi == 2){
+                    map<int, double> llave;
+                    llave[1] = 30;
+                    llave[2] = 40;
+                    llave[2] = 60;
+                    llave[2] = 100;
+                    ResguardoDos();
+                    total = cobro(llave, total);
+                    cout << total << endl;
+
+                }else if(servi == 3){
+                    map<int, double> llave;
+                    llave[1] = 40;
+                    llave[2] = 50;
+                    llave[2] = 70;
+                    llave[2] = 110;
+                    ResguardoTres();
+                    total = cobro(llave, total);
+                    cout << total << endl;
     }
     }
+}
     
 }
+}
 
+        //Aqui termina la seccion de servicios
 
 
 /*
