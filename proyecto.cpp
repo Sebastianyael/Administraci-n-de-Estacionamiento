@@ -4,14 +4,19 @@
 #include <map>
 #define CYAN    "\033[36m"
 #define RESET   "\033[0m"
-/*#include <fstream>*/
+#include <fstream>
 using namespace std;
 std::string eleccion;
 std::string si = "si";
 int cuotatotal = 0;
 
 
+//la parte de cris 
+//arreglos 
+ 
+
 // Seccion de productos en forma de funciones 
+
 void Shampoo(int ancho = 1){
     cout << string(ancho * 5 , ' ') << "Shampoo para autos" << endl;
     cout << string(ancho * 30 , '-') << endl;
@@ -319,9 +324,10 @@ void LiquidoLimpiaparabrisas(int ancho = 1){
 
 double Cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0, const string& si = "si", string eleccion = "si" ){
     double piezas;
-    while(eleccion == si){
+    
         cout << "Ingresa el numero del producto que quieras comprar" << endl;
         cin >> codigo;
+        
         cout << "Cuantas piezas deseas comprar? " << endl;
         cin >> piezas;
         sumatoria = (se.at(codigo) * piezas) + sumatoria;
@@ -329,7 +335,7 @@ double Cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0,
         cin >> eleccion;
        
 
-    }
+    
     
     cout << "El total a pagar es: " << sumatoria << endl;
     cout << "Quieres finalizar tu compra?" << endl;
@@ -342,8 +348,10 @@ double Cobro( const map<int, double>& se, double sumatoria, double codigo = 0.0,
         sumatoria = 0;
     }
     return sumatoria;
-    
 }
+    
+    
+
 
 void CargaBasica(int ancho = 1){
     cout << string(ancho * 5 , ' ') << "Servicio -  Carga Basico" << endl;
@@ -528,30 +536,34 @@ double cobro( const map<int, double>& se ,double sumatoria, double codigo = 0.0,
 int main(){
     double codigo = 0.0 ,total = 0, produc,servi; 
     int a,ancho = 1,producto,tipoTransporte;
-    int servicio, opcion;
+    int servicio, opcion , sumatoria  , piezas;
     
     std::string eleccion;
+    std::string eleccion2;
     std::string si = "si";
-    const int horaC=20;
-    const int diaC=80;
-    const int semanaC=500;
-    const int mesC=2050;
-    const int anualC=25000;
-    const int horaM=20;
-    const int diaM=50;
-    const int semanaM=300;
-    const int mesM=1200;
-    const int anualM=14000;
-    const int horaB=20;
-    const int diaB=40;
-    const int semanaB=200;
-    const int mesB=800;
-    const int anualB=9500;
+    const int horaC = 20;
+    const int diaC = 80;
+    const int semanaC = 500;
+    const int mesC = 2050;
+    const int anualC = 25000;
+    const int horaM = 20;
+    const int diaM = 50;
+    const int semanaM = 300;
+    const int mesM = 1200;
+    const int anualM = 14000;
+    const int horaB = 20;
+    const int diaB = 40;
+    const int semanaB = 200;
+    const int mesB = 800;
+    const int anualB = 9500;
+    ofstream com;
+   
+    
     
   
     while(opcion != 5){
         cout << string(ancho * 60, '-') << endl;
-        cout << "Bienvenidos a la administracion del estacionamiento UTVT" << endl;
+        cout << "Bienvenidos al estacionamiento UTVT" << endl;
         cout << string(ancho * 60, '-') << endl;
         cout << "1) Cuota" << endl;
         cout << string(ancho * 30, '-') << endl; 
@@ -567,213 +579,420 @@ int main(){
         cin >> opcion;
 
     if(opcion == 1){
+
+        com.open("listaDeCompras.txt" , ios::app);
+        com << " " << endl;
+        com << "Cuotas" << endl;
+        com.close();
         cout << "1) Carro o camioneta" << endl;
         cout << string(ancho * 40, '-') << endl;
         cout << "2) Motocicletas" << endl;
         cout << string(ancho * 40, '-') << endl;
         cout << "3) Bicicletas" << endl;
         cout << string(ancho * 40, '-') << endl;
+        cout << "5) volver al menu" << endl;
+        cout << string(ancho * 40, '-') << endl;
         cout << "Elije una opcion" << endl;
         cin >> tipoTransporte;
+
+        if(tipoTransporte != 5){
+            if(tipoTransporte == 1 ){
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "Carro o camioneta"  << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "1) Cobro menor a dos horas 20 pesos"<< endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "2) Cobro por dia 80 pesos " << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "3) Cobro semanal 500 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "4) Cobro mensual 2050 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "5) Cobro anual 25,000 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "6) Volver al menu principal" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << "Selecciona una cuota" << endl;
+                cin >> a;
+
+                if(a != 6){
+                    if (
+                        a==1 
+                    ){
+                        cout << "Su cargo es de 20 pesos"  << endl;
+                        cuotatotal = cuotatotal + horaC;
+                        total = total + cuotatotal;
+                        
         
-        if(tipoTransporte == 1 ){
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "Carro o camioneta"  << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "1) Cobro menor a dos horas 20 pesos"<< endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "2) Cobro por dia 80 pesos " << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "3) Cobro semanal 500 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "4) Cobro mensual 2050 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "5) Cobro anual 25,000 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << "Selecciona una cuota" << endl;
-            cin >> a;
-            if (
-                a==1 
-            ){
-                cout << "Su cargo es de 20 pesos"  << endl;
-                cuotatotal=cuotatotal+horaC ;
-                total = total + cuotatotal;
-            }
-            else if(
-                a==2
-            ){
-                cout << "Su cargo es de 80 pesos" << endl;
-                cuotatotal=cuotatotal+diaC;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==3
-            ){
-                cout << "Su cargo es de 500 pesos" << endl;
-                cuotatotal=cuotatotal+semanaC;
-                total = total + cuotatotal;
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Carro o camioneta: " << "Cobro menor a dos horas 20 pesos" << endl;
+                        com.close();
+                        
+                    }
+                    else if(
+                        a==2
+                    ){
+                        cout << "Su cargo es de 80 pesos" << endl;
+                        cuotatotal = cuotatotal + diaC;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Carro o camioneta: " << "Cobro por dia 80 pesos" << endl;
+                        com.close();
+                       
+                    }
+                    else if (
+                        a==3
+                    ){
+                        cout << "Su cargo es de 500 pesos" << endl;
+                        cuotatotal = cuotatotal + semanaC;
+                        total = total + cuotatotal;
+                        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Carro o camioneta: " << "Cobro semanal 500 pesos" << endl;
+                        com.close();
+                        
+                        
+                    
+                    }
+                    else if (
+                        a==4
+                    ){
+                        cout << "Su cargo es de 2,050 pesos" << endl;
+                        cuotatotal = cuotatotal + mesC;
+                        total = total + cuotatotal;
+                        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Carro o camioneta: " << "Cobro mensual 2050 pesos" << endl;
+                        com.close();
+                       
+                    }
+                    else if (
+                        a==5
+                    ){
+                        cout << "Su cargo es de 25,000 pesos" << endl;
+                        cuotatotal = cuotatotal + anualC;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Carro o camioneta: " << "Cobro anual 25,000 pesos" << endl;
+                        com.close();
+                        
+                    }
+        
+                    cout << "El total es de: " << total << endl;
+                    cout << "Quieres finalizar tu compra" << endl;
+                    cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                    cin >> eleccion;
+        
+                    if(eleccion == si){
+                        if(total > 2500){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+
+                            double descuento = total * 0.20; 
+                            total -= descuento;
+
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                            com << "El total a pagar con descuento es: " << total << endl;
+                            com.close();
+                            ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                        }else{
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+    
+                            ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                        }  
+
+                    }
+                }
+                
+             }
+
+             else if(tipoTransporte == 2 ){
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "Motocicletas" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "1) Cobro menor a dos horas 20 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "2) Cobro por dia 50 pesos " << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "3) Cobro semanal 300 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "4) Cobro mensual 1200 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "5) Cobro anual 14,000 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') <<  setw(ancho) << "6) Volver al menu principal" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << "Selecciona una cuota" << endl;
+                cin >> a;
+    
+                if(a != 6){
+                    if (
+                        a==1 
+                    ){
+                        cout << "Su cargo es de 20 pesos" << endl;
+                        cuotatotal = cuotatotal + horaM;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Motocicletas " << "Cobro menor a dos horas 20 pesos" << endl;
+                        com.close();
+                        
+                    }
+                    else if(
+                        a==2
+                    ){
+                        cout << "Su cargo es de 50 pesos" << endl;
+                        cuotatotal = cuotatotal + diaM;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Motocicletas " << "Cobro por dia 50 pesos" << endl;
+                        com.close();
+                    }
+                    else if (
+                        a==3
+                    ){
+                        cout << "Su cargo es de 300 pesos" << endl;
+                        cuotatotal = cuotatotal + semanaM;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Motocicletas " << "Cobro semanal 300 pesos" << endl;
+                        com.close();
+                    
+                    }
+                    else if (
+                        a==4
+                    ){
+                        cout << "Su cargo es de 1,200 pesos" << endl;
+                        cuotatotal = cuotatotal + mesM;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Motocicletas " << "Cobro mensual 1200 pesos" << endl;
+                        com.close();
+                    }
+                    else if (
+                        a==5
+                    ){
+                        cout << "Su cargo es de 14,000 pesos" << endl;
+                        cuotatotal = cuotatotal + anualM;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Motocicletas " << "Cobro mensual 1200 pesos" << endl;
+                        com.close();
+                    }
+        
+                    cout << "El total es de: " << total << endl;
+                    cout << "Quieres finalizar tu compra" << endl;
+                    cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                    cin >> eleccion;
+        
+                    if(eleccion == si){
+                        if(total > 2500){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+
+                            double descuento = total * 0.20; 
+                            total -= descuento;
+
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                            com << "El total a pagar con descuento es: " << total << endl;
+                            com.close();
+                            ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                        }else{
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+    
+                            ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                        }  
+                        
+                    }
+                }
+                
+                
+       
+        
+             }
+             else if(tipoTransporte == 3){
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "Bicicletas" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "1) Cobro menor a dos horas 20 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "2) Cobro por dia 40 pesos " << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "3) Cobro semanal 200 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "4) Cobro mensual 800 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "5) Cobro anual 9,500 pesos" << endl;
+                cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
+                cout << string(ancho * 1, '|') << "6) Volver al menu principal" << endl;
+                cout << "Selecciona una cuota" << endl;
+                cin >> a;
+
+                if(a != 6){
+                    if (
+                        a==1 
+                    ){
+                        cout << "Su cargo es de 20 pesos";
+                        cuotatotal = cuotatotal + horaB;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Bicicletas " << "Cobro menor a dos horas 20 pesos" << endl;
+                        com.close();
+                    }
+                    else if(
+                        a==2
+                    ){
+                        cout << "Su cargo es de 40 pesos";
+                        cuotatotal = cuotatotal + diaB;
+                        total = total + cuotatotal;
+                        cout << "El monto total es de: " << total << endl;
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Bicicletas " << "Cobro por dia 40 pesos" << endl;
+                        com.close();
+                    }
+                    else if (
+                        a==3
+                    ){
+                        cout << "Su cargo es de 200 pesos";
+                        cuotatotal = cuotatotal + semanaB;
+                        total = total + cuotatotal;
+                       
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Bicicletas " << "Cobro semanal 200 pesos" << endl;
+                        com.close();
+                    
+                    }
+                    else if (
+                        a==4
+                    ){
+                        cout << "Su cargo es de 800 pesos";
+                        cuotatotal = cuotatotal + mesB;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Bicicletas " << "Cobro mensual 800 pesos" << endl;
+                        com.close();
+                    }
+                    else if (
+                        a==5
+                    ){
+                        cout << "Su cargo es de 9,500 pesos";
+                        cuotatotal = cuotatotal + anualB;
+                        total = total + cuotatotal;
+                        
+        
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Bicicletas " << "Cobro anual 9,500 pesos" << endl;
+                        com.close();
+                    }
             
+                    cout << "El total es de: " << total << endl;
+                    cout << "Quieres finalizar tu compra" << endl;
+                    cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                    cin >> eleccion;
+        
+                    if(eleccion == si){
+                        if(total > 2500){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+
+                            double descuento = total * 0.20; 
+                            total -= descuento;
+
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                            com << "El total a pagar con descuento es: " << total << endl;
+                            com.close();
+                            ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                        }else{
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+    
+                            ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                        }
+                        
+                    }
+        
+                }
+    
+
             }
-            else if (
-                a==4
-            ){
-                cout << "Su cargo es de 2,050 pesos" << endl;
-                cuotatotal=cuotatotal+mesC;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==5
-            ){
-                cout << "Su cargo es de 25,000 pesos" << endl;
-                cuotatotal=cuotatotal+anualC;
-                total = total + cuotatotal;
-            }
+                  
+        }
+
+
         
         
-           
-        cout << "Quieres finalizar tu compra" << endl;
-        cout << "NOTA al finalizar tu compra se mostrara el monto total de los productos , servicios y cuotas adquirirdos" << endl;
-        cin >> eleccion;
-
-        if(eleccion == si){
-            cout << "El total a pagar es: " << total << endl;
-            cout << "Gracias por tu compra" << endl;
-            total = 0;
-            cuotatotal = 0;
-        }
-    
-            
-         }
-         else if(tipoTransporte == 2 ){
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "Motocicletas" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "1) Cobro menor a dos horas 20 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "2) Cobro por dia 50 pesos " << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "3) Cobro semanal 300 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "4) Cobro mensual 1200 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') <<  setw(ancho) << "5) Cobro anual 14,000 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << "Selecciona una cuota" << endl;
-            cin >> a;
-             if (
-                a==1 
-            ){
-                cout << "Su cargo es de 20 pesos" << endl;
-                cuotatotal=cuotatotal+horaM;
-                total = total + cuotatotal;
-            }
-            else if(
-                a==2
-            ){
-                cout << "Su cargo es de 50 pesos" << endl;
-                cuotatotal=cuotatotal+diaM;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==3
-            ){
-                cout << "Su cargo es de 300 pesos" << endl;
-                cuotatotal=cuotatotal+semanaM;
-                total = total + cuotatotal;
-            
-            }
-            else if (
-                a==4
-            ){
-                cout << "Su cargo es de 1,200 pesos" << endl;
-                cuotatotal=cuotatotal+mesM;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==5
-            ){
-                cout << "Su cargo es de 14,000 pesos" << endl;
-                cuotatotal=cuotatotal+anualM;
-                total = total + cuotatotal;
-            }
-            
-    cout << "Quieres finalizar tu compra" << endl;
-        cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
-        cin >> eleccion;
-
-        if(eleccion == si){
-            
-            cout << "El total a pagar es: " << total << endl;
-            cout << "Gracias por tu compra" << endl;
-            total = 0;
-            cuotatotal = 0;
-        }
-    
-         }
-         else if(tipoTransporte == 3){
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "Bicicletas" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "1) Cobro menor a dos horas 20 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "2) Cobro por dia 40 pesos " << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "3) Cobro semanal 200 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "4) Cobro mensual 800 pesos" << endl;
-            cout << string(ancho * 1, '|') <<  string(ancho * 40, '-') << string(ancho * 1, '|') << endl;
-            cout << string(ancho * 1, '|') << "5) Cobro anual 9,500 pesos" << endl;
-            cout << "Selecciona una cuota" << endl;
-            cin >> a;
-              if (
-                a==1 
-            ){
-                cout << "Su cargo es de 20 pesos";
-                cuotatotal=cuotatotal+horaB;
-                total = total + cuotatotal;
-            }
-            else if(
-                a==2
-            ){
-                cout << "Su cargo es de 40 pesos";
-                cuotatotal=cuotatotal+diaB;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==3
-            ){
-                cout << "Su cargo es de 200 pesos";
-                cuotatotal=cuotatotal+semanaB;
-                total = total + cuotatotal;
-            
-            }
-            else if (
-                a==4
-            ){
-                cout << "Su cargo es de 800 pesos";
-                cuotatotal=cuotatotal+mesB;
-                total = total + cuotatotal;
-            }
-            else if (
-                a==5
-            ){
-                cout << "Su cargo es de 9,500 pesos";
-                cuotatotal=cuotatotal+anualB;
-                total = total + cuotatotal;
-            }
-    
-    cout << "Quieres finalizar tu compra" << endl;
-        cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
-        cin >> eleccion;
-
-        if(eleccion == si){
-            cout << "El total a pagar es: " << total << endl;
-            cout << "Gracias por tu compra" << endl;
-            total = 0;
-            cuotatotal = 0;
-        }
-
-        }
 
     //Aqui empieza la seccion de productos
 
@@ -784,442 +1003,1594 @@ int main(){
         cout << string(ancho * 25, '-') << endl;
         cout << "3) Refaccionaria" << endl;
         cout << string(ancho * 25, '-') << endl;
+        cout << "0) Volver al menu principal" << endl;
+        cout << string(ancho * 25, '-') << endl;
         cout << "Elige una opcion" << endl;
         cin >> producto;
 
-        if( producto == 1 ){
-            cout << string(ancho * 40, '-') << endl;
-            cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Shampoo para autos" << endl;
-            cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Cera liquida" << endl;
-            cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de llantas" << endl;
-            cout << CYAN << "4)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de tapiceria" << endl;
-            cout << CYAN << "5)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de cristales" << endl;
-            cout << CYAN << "6)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Ambientadores para autos" << endl;
-            cout << CYAN << "7)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de interiores" << endl;
-            cout << CYAN << "8)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Esponjas de microfibra" << endl;
-            cout << CYAN << "9)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Guantes de limpieza de microfibra" << endl;
-            cout << CYAN << "10)" << RESET << string(ancho *1 ,  ' ') << string(ancho*1 , '|' ) << "Aspiradora portatil para autos" << endl;
-            cout << string(ancho * 40, '-') << endl;
-            
-            cout << "Que tipo de producto quieres comprar" << endl;
-            cin >> produc;
-            if(produc == 1){
-                map<int, double> shampoo;
-                shampoo[1] = 137;
-                shampoo[2] = 110;
-                shampoo[3] = 80;
-                shampoo[4] = 34;
-                Shampoo();
-                total = Cobro(shampoo , total , cuotatotal);
 
+        if(producto != 0){
+            if( producto == 1 ){
+                cout << string(ancho * 40, '-') << endl;
+                cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Shampoo para autos" << endl;
+                cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Cera liquida" << endl;
+                cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de llantas" << endl;
+                cout << CYAN << "4)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de tapiceria" << endl;
+                cout << CYAN << "5)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de cristales" << endl;
+                cout << CYAN << "6)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Ambientadores para autos" << endl;
+                cout << CYAN << "7)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Limpiador de interiores" << endl;
+                cout << CYAN << "8)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Esponjas de microfibra" << endl;
+                cout << CYAN << "9)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Guantes de limpieza de microfibra" << endl;
+                cout << CYAN << "10)" << RESET << string(ancho *1 ,  ' ') << string(ancho*1 , '|' ) << "Aspiradora portatil para autos" << endl;
+                cout << CYAN << "0)" << RESET << string(ancho *2 ,  ' ') << string(ancho*1 , '|' ) << "Volver al menu principal" << endl;
+                cout << string(ancho * 40, '-') << endl;
+                
+                cout << "Que tipo de producto quieres comprar" << endl;
+                cin >> produc;
+    
+                if(produc != 0){
+                    com.open("listaDeCompras.txt" , ios::app);
+                com << " " << endl;
+                com << "Productos" << endl;
+                com.close();
+    
+                
+    
+                if(produc == 1){
+                    map<int, double> shampoo;
+                    shampoo[1] = 137;
+                    shampoo[2] = 110;
+                    shampoo[3] = 80;
+                    shampoo[4] = 34;
+                    Shampoo();
+    
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+    
+    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (shampoo.at(codigo) * piezas);
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "137 MXN Nitro Shampoo de Carroceria 4L " << endl;
+                            com.close();
+    
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "110 MXN Shampoo con Cera Car Wash Margrey 3.8L " << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "80 MXN Auto Drive 3.8L" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "34 MXN Autos Roshfrans 950ml" << endl;
+                            com.close();
+                        }
+    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+    
+                                
+                }else if(produc == 2){
+                    map<int , double> cera;
+                    cera[1] = 441;
+                    cera[2] = 189;
+                    cera[3] = 119;
+                    cera[4] = 100;
+                    Cera();
+                    
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (cera.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "441 MXN Acrilica Marvil 473ml" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "189 MXN Meguiar's Ultimate" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "119 MXN Armor All Ultra Shine" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "100 MXN Marvil con Silicón" << endl;
+                            com.close();
+                        }
+                
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+    
+                }else if(produc == 3){
+                    map <int , double> Limpiador;
+                    Limpiador[1] = 560;
+                    Limpiador[2] = 430;
+                    Limpiador[3] = 325;
+                    Limpiador[4] = 99;
+                    limpiador();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (Limpiador.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "560 MXN Llantas Meguiar's Ultimate 710ml" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "430 MXN Chemical Guys Diablo 473ml" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "325 MXN Alclear 300ml" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "99 MXN Sisbrill V60 Sport 250ml" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 4){
+                    map <int, double> limpiadorTapiceria;
+                    limpiadorTapiceria[1] = 600;
+                    limpiadorTapiceria[2] = 300;
+                    limpiadorTapiceria[3] = 325;
+                    limpiadorTapiceria[4] = 99;
+                    LimpiadorTapiceria();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (limpiadorTapiceria.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "600 MXN Meguiar's 710ml" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "300 MXN Chemical Guys Diablo 473ml" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "325 MXN Alclear 300ml" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "99 MXN Sisbrill V60 Sport 250ml" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 5){
+                    map <int, double> limpiadorCristales;
+                    limpiadorCristales[1] = 150;
+                    limpiadorCristales[2] = 200;
+                    limpiadorCristales[3] = 175;
+                    limpiadorCristales[4] = 130;
+                    LimpiadorCristales();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (limpiadorCristales.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "150 MXN Windex 500ml" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "200 MXN Armor All 700ml" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "175 MXN Rain-X 600ml" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "130 MXN 3M Glass Cleaner 500ml" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 6){
+                    map <int, double> ambientadoresAutos;
+                    ambientadoresAutos[1] = 50;
+                    ambientadoresAutos[2] = 120;    
+                    ambientadoresAutos[3] = 90;
+                    ambientadoresAutos[4] = 80;
+                    AmbientadoresAutos();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (ambientadoresAutos.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "50 MXN Little Trees (varios aromas)" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "120 MXN Glade Auto 200ml" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "90 MXN Aroma Car 150ml" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "80 MXN California Scents 42g" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                   
+    
+                }else if(produc == 7){
+                    map <int, double> limpiadorInteriores;
+                    limpiadorInteriores[1] = 300;
+                    limpiadorInteriores[2] = 280;
+                    limpiadorInteriores[3] = 250;
+                    limpiadorInteriores[4] = 190;
+                    LimpiadorInteriores();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (limpiadorInteriores.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "300 MXN Armor All 500ml" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "280 MXN Meguiar's Quik Interior 473ml" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "250 MXN Turtle Wax Dash & Glass 500ml" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "190 MXN Chemical Guys InnerClean 473ml" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 8){
+                    map <int, double> esponjasMicrofibra;
+                    esponjasMicrofibra[1] = 100;
+                    esponjasMicrofibra[2] = 80;
+                    esponjasMicrofibra[3] = 150;
+                    esponjasMicrofibra[4] = 200;
+                    EsponjasMicrofibra();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (esponjasMicrofibra.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "100 MXN Armor All Pack 3" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "80 MXN 3M Esponja Microfibra" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "150 MXN Chemical Guys Pack 6" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "200 MXN Meguiar's Supreme Shine 3pzs" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 9){
+                    map <int, double> guantesMicrofibra;
+                    guantesMicrofibra[1] = 150;
+                    guantesMicrofibra[2] = 130;
+                    guantesMicrofibra[3] = 180;
+                    guantesMicrofibra[4] = 90;
+                    GuantesMicrofibra();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (guantesMicrofibra.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "150 MXN Armor All 1 par" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "130 MXN Meguiar's Ultra Plush" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "180 MXN Chemical Guys Workhorse" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "90 MXN Genérico Microfibra" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }else if(produc == 10){
+                    map <int, double> aspiradoraPortatil;
+                    aspiradoraPortatil[1] = 700;
+                    aspiradoraPortatil[2] = 600;
+                    aspiradoraPortatil[3] = 850;
+                    aspiradoraPortatil[4] = 950;
+                    AspiradoraPortatil();
+                    cout << "Quieres comprar un producto de esta seccion" << endl;
+                    cin >> eleccion;
+                    
+                    while(eleccion == si){
+                        cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                        cin >> codigo;
+                    
+                        cout << "Cuantas piezas deseas comprar? " << endl;
+                        cin >> piezas;
+                        sumatoria = (aspiradoraPortatil.at(codigo) * piezas);  
+                        
+                        if(codigo == 1){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "700 MXN Black+Decker 12V" << endl;
+                            com.close();
+                        }else if(codigo == 2){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "600 MXN Armor All 12V" << endl;
+                            com.close();
+                        }else if(codigo == 3){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "850 MXN Tineco Pure One" << endl;
+                            com.close();
+                        }else if(codigo == 4){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "950 MXN Dyson V7 Car+Boat" << endl;
+                            com.close();
+                        }
+                    
+                        cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                        cin >> eleccion;
+                    }
+                    total = total + sumatoria;
+                    
+                    
+    
+                }
+    
+    
+                cout << "El total es de: " << total << endl;
+                cout << "Quieres finalizar tu compra" << endl;
+                cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                cin >> eleccion;
+    
+                if(eleccion == si){
+                    if(total > 2500){
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "El total a pagar es: " << total << endl;
+                        com.close();
+
+                        double descuento = total * 0.20; 
+                        total -= descuento;
+
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                        com << "El total a pagar con descuento es: " << total << endl;
+                        com.close();
+                        ifstream h("listaDeCompras.txt"); 
+                        string line;
+                        while (getline(h, line)) { 
+                            cout << line << endl;
+                        }
+                        h.close();  
+                        total = 0;
+                        cuotatotal = 0;
+                    }else{
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "El total a pagar es: " << total << endl;
+                        com.close();
+    
+                        ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                    }
+                    
+                }
+                
+                }
+    
+                
+               
+            }else if(producto == 2){
+                cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Aceite para motor" << endl;
+                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de aceite" << endl;
+                cout << CYAN << "3)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de aire" << endl;
+                cout << CYAN << "4)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de combustible" << endl;
+                cout << CYAN << "5)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Anticongelante/refrigerante" << endl;
+                cout << CYAN << "6)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Bateria para autos" << endl;
+                cout << CYAN << "7)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Lubricante para frenos" << endl;
+                cout << CYAN << "8)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Limpiador de inyectores" << endl;
+                cout << CYAN << "9)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Liquido de frenos" << endl;
+                cout << CYAN << "10)" << RESET << string(ancho * 1 , ' ') << string(ancho *1 , '|') << "Liquido limpiaparabrisas" << endl;
+                cout << CYAN << "0)" << RESET << string(ancho *1 ,  ' ') << string(ancho*1 , '|' ) << "Volver al menu principal" << endl;
+    
+                
+                cout << "Que tipo de producto quieres comprar" << endl;
+                cin >> produc;
+    
+                if(produc != 0){
+                    if(produc == 1){
+                        map<int, double> aceiteMotor;
+                        aceiteMotor[1] = 100;
+                        aceiteMotor[2] = 120;
+                        aceiteMotor[3] = 90;
+                        aceiteMotor[4] = 110;
+                        AceiteMotor();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (aceiteMotor.at(codigo) * piezas);  
                             
-            }else if(produc == 2){
-                map<int , double> cera;
-                cera[1] = 441;
-                cera[2] = 189;
-                cera[3] = 119;
-                cera[4] = 100;
-                Cera();
-                total = Cobro(cera , total , cuotatotal);
-                
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "100 MXN Castrol" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "120 MXN Mobil 1" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "100 MXN Valvoline" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "110 MXN Quaker State" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+                        
+                    }else if(produc == 2){
+                        map<int, double> filtroAceite;
+                        filtroAceite[1] = 150;
+                        filtroAceite[2] = 130;
+                        filtroAceite[3] = 180;
+                        filtroAceite[4] = 200;
+                        FiltroAceite();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (filtroAceite.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "150 MXN Fram" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "130 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "180 MXN AC Delco" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "200 MXN Motorcraft" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+        
+                        
+                        
+                        
+        
+                    }else if(produc == 3){
+                        map<int, double> filtroAire;
+                        filtroAire[1] = 250;
+                        filtroAire[2] = 300;
+                        filtroAire[3] = 280;
+                        filtroAire[4] = 290;
+                        FiltroAire();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (filtroAire.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "250 MXN Wix Filters" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "300 MXN Fram" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "280 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "290 MXN K&N" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 4){
+                        map<int, double> filtroCombustible;
+                        filtroCombustible[1] = 300;
+                        filtroCombustible[2] = 350;
+                        filtroCombustible[3] = 400;
+                        filtroCombustible[4] = 380;
+                        FiltroCombustible();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (filtroCombustible.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "300 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "350 MXN AC Delco" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "400 MXN Fram" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "380 MXN Motorcraft" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 5){
+                        map<int, double> anticongelante;
+                        anticongelante[1] = 250;
+                        anticongelante[2] = 300;
+                        anticongelante[3] = 270;
+                        anticongelante[4] = 280;
+                        Anticongelante();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (anticongelante.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "250 MXN Prestone" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "300 MXN Peak" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "270 MXN Motorcraft" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "280 MXN Valvoline" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 6){
+                        map<int, double> bateriaAutos;
+                        bateriaAutos[1] = 2500;
+                        bateriaAutos[2] = 2700;
+                        bateriaAutos[3] = 2900;
+                        bateriaAutos[4] = 3200;
+                        BateriaAutos();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (bateriaAutos.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2500 MXN LTH" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2700 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2900 MXN Optima" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "3200 MXN Varta" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+                        
+        
+                    }else if(produc == 7){
+                        map<int, double> lubricanteFrenos;
+                        lubricanteFrenos[1] = 120;
+                        lubricanteFrenos[2] = 100;
+                        lubricanteFrenos[3] = 130;
+                        lubricanteFrenos[4] = 110;
+                        LubricanteFrenos();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (lubricanteFrenos.at(codigo) * piezas); 
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "120 MXN Liqui Moly" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "100 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "130 MXN Permatex" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "110 MXN CRC" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                       
+        
+                    }else if(produc == 8){
+                        map<int, double> limpiadorInyectores;
+                        limpiadorInyectores[1] = 150;
+                        limpiadorInyectores[2] = 180;
+                        limpiadorInyectores[3] = 200;
+                        limpiadorInyectores[4] = 170;
+                        LimpiadorInyectores();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (limpiadorInyectores.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "150 MXN STP" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "180 MXN Liqui Moly" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "200 MXN Chevron" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "170 MXN Valvoline" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if (produc == 9){
+                        map<int, double> liquidoFrenos;
+                        liquidoFrenos[1] = 250;
+                        liquidoFrenos[2] = 270;
+                        liquidoFrenos[3] = 300;
+                        liquidoFrenos[4] = 280;
+                        LiquidoFrenos();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (liquidoFrenos.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "250 MXN Prestone" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "270 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "300 MXN Motorcraft" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "280 MXN Valvoline" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+                        
+                    }else if(produc == 10){
+                        map<int, double> liquidoLimpiaparabrisas;
+                        liquidoLimpiaparabrisas[1] = 100;
+                        liquidoLimpiaparabrisas[2] = 120;
+                        liquidoLimpiaparabrisas[3] = 110;
+                        liquidoLimpiaparabrisas[4] = 130;
+                        LiquidoLimpiaparabrisas();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (liquidoLimpiaparabrisas.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "100 MXN Rain-X" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "120 MXN Prestone" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "110 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "130 MXN Turtle Wax" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;     
+                    }
+                    
+                    cout << "El total es de: " << total << endl;
+                    cout << "Quieres finalizar tu compra" << endl;
+                    cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                    cin >> eleccion;
+        
+                    if(eleccion == si){
+                        if(total > 2500){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
 
-            }else if(produc == 3){
-                map <int , double> Limpiador;
-                Limpiador[1] = 560;
-                Limpiador[2] = 430;
-                Limpiador[3] = 325;
-                Limpiador[4] = 99;
-                limpiador();
-                total = Cobro(Limpiador , total  , cuotatotal);
-                
+                            double descuento = total * 0.20; 
+                            total -= descuento;
 
-            }else if(produc == 4){
-                map <int, double> limpiadorTapiceria;
-                limpiadorTapiceria[1] = 600;
-                limpiadorTapiceria[2] = 300;
-                limpiadorTapiceria[3] = 325;
-                limpiadorTapiceria[4] = 99;
-                LimpiadorTapiceria();
-                total = Cobro(limpiadorTapiceria , total , cuotatotal);
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                            com << "El total a pagar con descuento es: " << total << endl;
+                            com.close();
+                            ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                        }else{
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+    
+                            ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                        }  
+                        
+                    }
+                    
+    
+                }
+                 
                 
-
-            }else if(produc == 5){
-                map <int, double> limpiadorCristales;
-                limpiadorCristales[1] = 150;
-                limpiadorCristales[2] = 200;
-                limpiadorCristales[3] = 175;
-                limpiadorCristales[4] = 130;
-                LimpiadorCristales();
-                total = Cobro(limpiadorCristales , total , cuotatotal);
-                
-
-            }else if(produc == 6){
-                map <int, double> ambientadoresAutos;
-                ambientadoresAutos[1] = 50;
-                ambientadoresAutos[2] = 120;    
-                ambientadoresAutos[3] = 90;
-                ambientadoresAutos[4] = 80;
-                AmbientadoresAutos();
-                total = Cobro(ambientadoresAutos , total , cuotatotal);
+    
                
+            }else if(producto == 3 ){
+                cout << CYAN << "2)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Rines" << endl;
+                cout << CYAN << "1)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Pastillas de freno" << endl;
+                cout << CYAN << "3)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Discos de freno" << endl;
+                cout << CYAN << "4)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Bombas de agua" << endl;
+                cout << CYAN << "5)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Bujias de repuesto" << endl;
+                cout << CYAN << "6)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Correas de distribucion" << endl;
+                cout << CYAN << "7)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Baterias de arranque" << endl;
+                cout << CYAN << "8)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Radiadores" << endl;
+                cout << CYAN << "9)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Fusibles" << endl;
+                cout << CYAN << "10)" << RESET << string(ancho * 1 , ' ') << string(ancho*1 , '|' ) << "Bombillas de repuesto" << endl;
+                cout << CYAN << "0)" << RESET << string(ancho * 1 , ' ') << string(ancho *1 ,  '|') << "Volver al menu principal" << endl;
+    
+                cout << "Que tipo de producto quieres adquirir" << endl;
+                cin >> produc;
+    
+                if(produc != 0){
+                    if(produc == 1){
+                        map<int, double> pastillasFreno;
+                        pastillasFreno[1] = 450;
+                        pastillasFreno[2] = 390;
+                        pastillasFreno[3] = 500;
+                        pastillasFreno[4] = 420;
+                        PastillasFreno();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (pastillasFreno.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "450 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "390 MXN Brembo" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "500 MXN TRW" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "420 MXN Wagner" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 2){
+                        map<int, double> rines;
+                        rines[1] = 2500;
+                        rines[2] = 2700;
+                        rines[3] = 3000;
+                        rines[4] = 3200;
+                        Rines();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (rines.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "2500 MXN Enkei" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "2700 MXN BBS" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "3000 MXN OZ Racing" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "3200 MXN Fuel Off-Road" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 3){
+                        map<int, double> discosFreno;
+                        discosFreno[1] = 700;
+                        discosFreno[2] = 750;
+                        discosFreno[3] = 800;
+                        discosFreno[4] = 850;
+                        DiscosFreno();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (discosFreno.at(codigo) * piezas); 
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "700 MXN Brembo" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "750 MXN Bosh" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "800 MXN Power Stop" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "850 MXN AC Delco" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                       
+                        
+                    }else if(produc == 4){
+                        map<int, double> bombasAgua;
+                        bombasAgua[1] = 1200;
+                        bombasAgua[2] = 1350;
+                        bombasAgua[3] = 1500;
+                        bombasAgua[4] = 1600;
+                        BombasAgua();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (bombasAgua.at(codigo) * piezas); 
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1200 MXN Gates" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1350 MXN Aisin" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1500 MXN AC Delco" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1600 MXN Bosch" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 5){
+                        map<int, double> bujiasRepuesto;
+                        bujiasRepuesto[1] = 60;
+                        bujiasRepuesto[2] = 75;
+                        bujiasRepuesto[3] = 90;
+                        bujiasRepuesto[4] = 110;
+                        BujiasRepuesto();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (bujiasRepuesto.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "60 MXN NGK" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "75 MXN Bosh" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "90 MXN Champion" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "110 MXN Denso" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 6){
+                        map<int, double> correasDistribucion;
+                        correasDistribucion[1] = 900;
+                        correasDistribucion[2] = 950;
+                        correasDistribucion[3] = 1100;
+                        correasDistribucion[4] = 1200;
+                        CorreasDistribucion();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (correasDistribucion.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "900 MXN Gates" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "950 MXN Continental" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1100 MXN Dayco" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "1200 MXN Mitsuboshi" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                       
+        
+                    }else if(produc == 7){
+                        map<int, double> bateriasArranque;
+                        bateriasArranque[1] = 2500;
+                        bateriasArranque[2] = 2700;
+                        bateriasArranque[3] = 2900;
+                        bateriasArranque[4] = 3200;
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (bateriasArranque.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2500 MXN LTH" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2700 MXN Bosch" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "2900 MXN Optima" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "3200 MXN Varta" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if(produc == 8){
+                        map<int, double> radiadores;
+                        radiadores[1] = 3500;
+                        radiadores[2] = 3800;
+                        radiadores[3] = 4200;
+                        radiadores[4] = 4500;
+                        Radiadores();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (radiadores.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "3500 MXN Denso" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "3800 MXN TYC" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "4200 MXN Behr Hella" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "4500 MXN Mishimoto" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+        
+                    }else if (produc == 9){
+                        map<int, double> fusibles;
+                        fusibles[1] = 30;
+                        fusibles[2] = 40;
+                        fusibles[3] = 50;
+                        fusibles[4] = 60;
+                        Fusibles();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (fusibles.at(codigo) * piezas); 
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "30 MXN Bussman" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "40 MXN Littelfuse" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "50 MXN Ferraz Shawmut" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "60 MXN Blue Sea Systems" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+                        
+                        
+                        
+                    }else if(produc == 10){
+                        map<int, double> bombillasRepuesto;
+                        bombillasRepuesto[1] = 120;
+                        bombillasRepuesto[2] = 150;
+                        bombillasRepuesto[3] = 180;
+                        bombillasRepuesto[4] = 200;
+                        BombillasRepuesto();
+                        cout << "Quieres comprar un producto de esta seccion" << endl;
+                        cin >> eleccion;
+                        
+                        while(eleccion == si){
+                            cout << "Ingresa el numero del producto que quieras comprar" << endl;
+                            cin >> codigo;
+                        
+                            cout << "Cuantas piezas deseas comprar? " << endl;
+                            cin >> piezas;
+                            sumatoria = (bombillasRepuesto.at(codigo) * piezas);  
+                            
+                            if(codigo == 1){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "120 MXN Philips" << endl;
+                                com.close();
+                            }else if(codigo == 2){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "150 MXN Osram" << endl;
+                                com.close();
+                            }else if(codigo == 3){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "180 MXN Sylvania" << endl;
+                                com.close();
+                            }else if(codigo == 4){
+                                com.open("listaDeCompras.txt", ios::app);
+                                com << "200 MXN Hella" << endl;
+                                com.close();
+                            }
+                        
+                            cout << "Quieres comprar otro producto de esta seccion?" << endl;
+                            cin >> eleccion;
+                        }
+                        total = total + sumatoria;
+        
+                    }
 
-            }else if(produc == 7){
-                map <int, double> limpiadorInteriores;
-                limpiadorInteriores[1] = 300;
-                limpiadorInteriores[2] = 280;
-                limpiadorInteriores[3] = 250;
-                limpiadorInteriores[4] = 190;
-                LimpiadorInteriores();
-                total = Cobro(limpiadorInteriores , total , cuotatotal);
-                
 
-            }else if(produc == 8){
-                map <int, double> esponjasMicrofibra;
-                esponjasMicrofibra[1] = 100;
-                esponjasMicrofibra[2] = 80;
-                esponjasMicrofibra[3] = 150;
-                esponjasMicrofibra[4] = 200;
-                EsponjasMicrofibra();
-                total = Cobro(esponjasMicrofibra , total , cuotatotal);
-                
+                    cout << "El total es de: " << total << endl;
+                    cout << "Quieres finalizar tu compra" << endl;
+                    cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                    cin >> eleccion;
+        
+                    if(eleccion == si){
+                        if(total > 2500){
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
 
-            }else if(produc == 9){
-                map <int, double> guantesMicrofibra;
-                guantesMicrofibra[1] = 150;
-                guantesMicrofibra[2] = 130;
-                guantesMicrofibra[3] = 180;
-                guantesMicrofibra[4] = 90;
-                GuantesMicrofibra();
-                total = Cobro(guantesMicrofibra , total , cuotatotal);
-                
+                            double descuento = total * 0.20; 
+                            total -= descuento;
 
-            }else if(produc == 10){
-                map <int, double> aspiradoraPortatil;
-                aspiradoraPortatil[1] = 700;
-                aspiradoraPortatil[2] = 600;
-                aspiradoraPortatil[3] = 850;
-                aspiradoraPortatil[4] = 950;
-                AspiradoraPortatil();
-                total = Cobro(aspiradoraPortatil , total , cuotatotal);
-                
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                            com << "El total a pagar con descuento es: " << total << endl;
+                            com.close();
+                            ifstream h("listaDeCompras.txt"); 
+                            string line;
+                            while (getline(h, line)) { 
+                                cout << line << endl;
+                            }
+                            h.close();  
+                            total = 0;
+                            cuotatotal = 0;
+                        }else{
+                            com.open("listaDeCompras.txt" , ios::app);
+                            com << "El total a pagar es: " << total << endl;
+                            com.close();
+    
+                            ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                        }
+                        
+                    }
+                    
+                }
 
-            }
-            
-           
-        }else if(producto == 2){
-            cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Aceite para motor" << endl;
-            cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de aceite" << endl;
-            cout << CYAN << "3)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de aire" << endl;
-            cout << CYAN << "4)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Filtro de combustible" << endl;
-            cout << CYAN << "5)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Anticongelante/refrigerante" << endl;
-            cout << CYAN << "6)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Bateria para autos" << endl;
-            cout << CYAN << "7)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Lubricante para frenos" << endl;
-            cout << CYAN << "8)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Limpiador de inyectores" << endl;
-            cout << CYAN << "9)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Liquido de frenos" << endl;
-            cout << CYAN << "10)" << RESET << string(ancho * 1 , ' ') << string(ancho *1 , '|') << "Liquido limpiaparabrisas" << endl;
-            
-            cout << "Que tipo de producto quieres comprar" << endl;
-            cin >> produc;
-             
-            if(produc == 1){
-                map<int, double> aceiteMotor;
-                aceiteMotor[1] = 100;
-                aceiteMotor[2] = 120;
-                aceiteMotor[3] = 90;
-                aceiteMotor[4] = 110;
-                AceiteMotor();
-                total = Cobro(aceiteMotor, total , cuotatotal);
-               
-                
-            }else if(produc == 2){
-                map<int, double> filtroAceite;
-                filtroAceite[1] = 150;
-                filtroAceite[2] = 130;
-                filtroAceite[3] = 180;
-                filtroAceite[4] = 200;
-                FiltroAceite();
-                total = Cobro(filtroAceite, total , cuotatotal);
-                
-
-            }else if(produc == 3){
-                map<int, double> filtroAire;
-                filtroAire[1] = 250;
-                filtroAire[2] = 300;
-                filtroAire[3] = 280;
-                filtroAire[4] = 290;
-                FiltroAire();
-                total = Cobro(filtroAire, total , cuotatotal);
-                
-
-            }else if(produc == 4){
-                map<int, double> filtroCombustible;
-                filtroCombustible[1] = 300;
-                filtroCombustible[2] = 350;
-                filtroCombustible[3] = 400;
-                filtroCombustible[4] = 380;
-                FiltroCombustible();
-                total = Cobro(filtroCombustible, total , cuotatotal);
-                
-
-            }else if(produc == 5){
-                map<int, double> anticongelante;
-                anticongelante[1] = 250;
-                anticongelante[2] = 300;
-                anticongelante[3] = 270;
-                anticongelante[4] = 280;
-                Anticongelante();
-                total = Cobro(anticongelante, total , cuotatotal);
-                
-
-            }else if(produc == 6){
-                map<int, double> bateriaAutos;
-                bateriaAutos[1] = 2500;
-                bateriaAutos[2] = 2700;
-                bateriaAutos[3] = 2900;
-                bateriaAutos[4] = 3200;
-                BateriaAutos();
-                total = Cobro(bateriaAutos, total , cuotatotal);
-                
-                
-
-            }else if(produc == 7){
-                map<int, double> lubricanteFrenos;
-                lubricanteFrenos[1] = 120;
-                lubricanteFrenos[2] = 100;
-                lubricanteFrenos[3] = 130;
-                lubricanteFrenos[4] = 110;
-                LubricanteFrenos();
-                total = Cobro(lubricanteFrenos, total , cuotatotal);
-               
-
-            }else if(produc == 8){
-                map<int, double> limpiadorInyectores;
-                limpiadorInyectores[1] = 150;
-                limpiadorInyectores[2] = 180;
-                limpiadorInyectores[3] = 200;
-                limpiadorInyectores[4] = 170;
-                LimpiadorInyectores();
-                total = Cobro(limpiadorInyectores, total , cuotatotal);
-                
-
-            }else if (produc == 9){
-                map<int, double> liquidoFrenos;
-                liquidoFrenos[1] = 250;
-                liquidoFrenos[2] = 270;
-                liquidoFrenos[3] = 300;
-                liquidoFrenos[4] = 280;
-                LiquidoFrenos();
-                total = Cobro(liquidoFrenos, total , cuotatotal);
-                
-                
-            }else if(produc == 10){
-                map<int, double> liquidoLimpiaparabrisas;
-                liquidoLimpiaparabrisas[1] = 100;
-                liquidoLimpiaparabrisas[2] = 120;
-                liquidoLimpiaparabrisas[3] = 110;
-                liquidoLimpiaparabrisas[4] = 130;
-                LiquidoLimpiaparabrisas();
-                total = Cobro(liquidoLimpiaparabrisas, total , cuotatotal);
-                
-            }
-
-           
-        }else if(producto == 3 ){
-            cout << CYAN << "1)" << RESET << string(ancho*1 , '|' ) << "279 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Pastillas de freno" << endl;
-            cout << CYAN << "2)" << RESET << string(ancho*1 , '|' ) << "3000 MXN" << string(ancho * 3 , ' ') << string(ancho *1, '|') << "Rines" << endl;
-            cout << CYAN << "3)" << RESET << string(ancho*1 , '|' ) << "2000 MXN" << string(ancho * 3 , ' ') << string(ancho *1, '|') << "Discos de freno" << endl;
-            cout << CYAN << "4)" << RESET << string(ancho*1 , '|' ) << "2100 MXN" << string(ancho * 3 , ' ') << string(ancho *1, '|') << "Bombas de agua" << endl;
-            cout << CYAN << "5)" << RESET << string(ancho*1 , '|' ) << "260 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Bujias de repuesto" << endl;
-            cout << CYAN << "6)" << RESET << string(ancho*1 , '|' ) << "300 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Correas de distribucion" << endl;
-            cout << CYAN << "7)" << RESET << string(ancho*1 , '|' ) << "1300 MXN" << string(ancho * 3 , ' ') << string(ancho *1, '|') << "Baterias de arranque" << endl;
-            cout << CYAN << "8)" << RESET << string(ancho*1 , '|' ) << "890 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Radiadores" << endl;
-            cout << CYAN << "9)" << RESET << string(ancho*1 , '|' ) << "500 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Fusibles" << endl;
-            cout << CYAN << "10)" << RESET << string(ancho*1 , '|' ) << "600 MXN" << string(ancho * 4 , ' ') << string(ancho *1, '|') << "Bombillas de repuesto" << endl;
-
-            cout << "Que tipo de producto quieres comprar" << endl;
-            cin >> produc;
-             
-
-            if(produc == 1){
-                map<int, double> pastillasFreno;
-                pastillasFreno[1] = 450;
-                pastillasFreno[2] = 390;
-                pastillasFreno[3] = 500;
-                pastillasFreno[4] = 420;
-                PastillasFreno();
-                total = Cobro(pastillasFreno , total , cuotatotal);
-                
-
-            }else if(produc == 2){
-                map<int, double> rines;
-                rines[1] = 2500;
-                rines[2] = 2700;
-                rines[3] = 3000;
-                rines[4] = 3200;
-                Rines();
-                total = Cobro(rines , total , cuotatotal);
-                
-
-            }else if(produc == 3){
-                map<int, double> discosFreno;
-                discosFreno[1] = 700;
-                discosFreno[2] = 750;
-                discosFreno[3] = 800;
-                discosFreno[4] = 850;
-                DiscosFreno();
-                total = Cobro(discosFreno , total , cuotatotal);
-               
-                
-            }else if(produc == 4){
-                map<int, double> bombasAgua;
-                bombasAgua[1] = 1200;
-                bombasAgua[2] = 1350;
-                bombasAgua[3] = 1500;
-                bombasAgua[4] = 1600;
-                BombasAgua();
-                total = Cobro(bombasAgua , total , cuotatotal);
-                
-
-            }else if(produc == 5){
-                map<int, double> bujiasRepuesto;
-                bujiasRepuesto[1] = 60;
-                bujiasRepuesto[2] = 75;
-                bujiasRepuesto[3] = 90;
-                bujiasRepuesto[4] = 110;
-                BujiasRepuesto();
-                total = Cobro(bujiasRepuesto , total , cuotatotal);
-                
-
-            }else if(produc == 6){
-                map<int, double> correasDistribucion;
-                correasDistribucion[1] = 900;
-                correasDistribucion[2] = 950;
-                correasDistribucion[3] = 1100;
-                correasDistribucion[4] = 1200;
-                CorreasDistribucion();
-                total = Cobro(correasDistribucion , total , cuotatotal);
-               
-
-            }else if(produc == 7){
-                map<int, double> bateriasArranque;
-                bateriasArranque[1] = 2500;
-                bateriasArranque[2] = 2700;
-                bateriasArranque[3] = 2900;
-                bateriasArranque[4] = 3200;
-                BateriasArranque();
-                total = Cobro(bateriasArranque , total , cuotatotal);
-                
-
-            }else if(produc == 8){
-                map<int, double> radiadores;
-                radiadores[1] = 3500;
-                radiadores[2] = 3800;
-                radiadores[3] = 4200;
-                radiadores[4] = 4500;
-                Radiadores();
-                total = Cobro(radiadores , total , cuotatotal);
-                
-
-            }else if (produc == 9){
-                map<int, double> fusibles;
-                fusibles[1] = 30;
-                fusibles[2] = 40;
-                fusibles[3] = 50;
-                fusibles[4] = 60;
-                Fusibles();
-                total = Cobro(fusibles , total , cuotatotal);
-                
-                
-            }else if(produc == 10){
-                map<int, double> bombillasRepuesto;
-                bombillasRepuesto[1] = 120;
-                bombillasRepuesto[2] = 150;
-                bombillasRepuesto[3] = 180;
-                bombillasRepuesto[4] = 200;
-                BombillasRepuesto();
-                total = Cobro(bombillasRepuesto , total , cuotatotal);
-                
-
-            }
-            
         }
-
-        //Aqui termina la seccion de productos
-
-
-        //Aqui enpieza la seccion de servicios
-
-    }else if(opcion == 3){
-        cout << "1) Energia" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "2) Parking" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "3) Ecorecarga" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "4) Reservacion" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "5) Asistencia" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "6) Resguardo seguros de llaves" << endl;
-        cout << string(ancho * 25, '-') << endl;
-        cout << "Elige una opcion" << endl;
-        cin >> servicio;
-
-        if( servicio == 1 ){
-            cout << string(ancho * 40, '-') << endl;
-            cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Basica del coche." << endl;
-            cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Media del coche." << endl;
-            cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Alta del coche." << endl;
-            cout << string(ancho * 40, '-') << endl;
-            cout << "Que servicio deseas adquirir?" << endl;
-            cin >> servi;
-            if(servi == 1){
-                map<int, double> carga;
-                carga[1] = 90;
-                carga[2] = 180;
-                CargaBasica();
-                total = cobro(carga , total , cuotatotal);
-                cout << total  << endl;
-
-            }else if(servi == 2){
-                map<int , double> carga;
-                carga[1] = 180;
-                carga[2] = 360;
-                CargaMedia();
-                total = cobro(carga , total , cuotatotal);
-                cout << total << endl;
-
-            }else if(servi == 3){
-                map <int , double> carga;
-                carga[1] = 250;
-                carga[2] = 500;
-                CargaAlta();
-                total = cobro(carga , total , cuotatotal);
-                cout << total << endl;
-            }
-
-        }else if(servicio == 2){
-            cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Cercano o lejano" << endl;
-            cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Nocturno" << endl;
-            cout << "¿Que servicio deseas adquirir?" << endl;
+    
+    
+            //Aqui termina la seccion de productos
+    
+    
+            //Aqui enpieza la seccion de servicios
+    
+        }else if(opcion == 3){
+            cout << "1) Energia" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "2) Parking" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "3) Ecorecarga" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "4) Reservacion" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "5) Asistencia" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "6) Resguardo seguros de llaves" << endl;
+            cout << string(ancho * 25, '-') << endl;
+            cout << "Elige una opcion" << endl;
             cin >> servicio;
+    
+            if( servicio == 1 ){
+                cout << string(ancho * 40, '-') << endl;
+                cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Basica del coche." << endl;
+                cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Media del coche." << endl;
+                cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Alta del coche." << endl;
+                cout << string(ancho * 40, '-') << endl;
+                cout << "Que servicio deseas adquirir?" << endl;
+                cin >> servi;
+                if(servi == 1){
+                    map<int, double> carga;
+                    carga[1] = 90;
+                    carga[2] = 180;
+                    CargaBasica();
+                    total = cobro(carga , total , cuotatotal);
+                    cout << total  << endl;
+    
+                }else if(servi == 2){
+                    map<int , double> carga;
+                    carga[1] = 180;
+                    carga[2] = 360;
+                    CargaMedia();
+                    total = cobro(carga , total , cuotatotal);
+                    cout << total << endl;
+    
+                }else if(servi == 3){
+                    map <int , double> carga;
+                    carga[1] = 250;
+                    carga[2] = 500;
+                    CargaAlta();
+                    total = cobro(carga , total , cuotatotal);
+                    cout << total << endl;
+                }
+    
+            }else if(servicio == 2){
+                cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Cercano o lejano" << endl;
+                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Nocturno" << endl;
+                cout << "¿Que servicio deseas adquirir?" << endl;
+                cin >> servicio;
+                 
+                if(servi ==1){
+                    map<int, double> cercano;
+                    cercano[1] = 60;
+                    cercano[2] = 150;
+                    AparcarmientoExpress();
+                    total = cobro(cercano, total , cuotatotal);
+                    cout << total << endl;
+    
+                }else if(servi == 2){
+                    map <int , double> carga;
+                    carga[1] = 100;
+                    carga[2] = 200;
+                    AparcamientoDos();
+                    total = cobro(carga , total , cuotatotal);
+                    cout << total << endl;
+            }
+            }
              
-            if(servi ==1){
-                map<int, double> cercano;
-                cercano[1] = 60;
-                cercano[2] = 150;
-                AparcarmientoExpress();
-                total = cobro(cercano, total , cuotatotal);
-                cout << total << endl;
 
-            }else if(servi == 2){
-                map <int , double> carga;
-                carga[1] = 100;
-                carga[2] = 200;
-                AparcamientoDos();
-                total = cobro(carga , total , cuotatotal);
-                cout << total << endl;
-        }
+            
 
     }else if(servicio == 3){
         cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina REGULAR hasta 5 litros" << endl;
@@ -1353,29 +2724,24 @@ int main(){
                 }
             }
         }else if(opcion == 4){
-            cout << "Elegiste la opcion de nosotros" << endl;
+
+            cout << " " << endl;
+            cout << "Bienvenidos al estacionamiento UTVT" << endl;
+            cout << "En UTVT estacionamiento nos especializamos en brindar seguridad comodidad y accesibilidad" << endl;
+            cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
+            cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
+            cout << "objetivo es ofrecer un servicio eficiente y confiable garantizando que su vehiculo este seguro" << endl;
+            cout << "mientras usted realiza sus actividades con total tranquilidad." << endl;
+            cout << "Contamos con amplias instalaciones tecnologia de vigilancia un equipo atento y tarifas competitivas" << endl;
+            cout << "todo establecido para adaptarse a sus necesidades. Ya sea que necesite estacionamiento por horas" << endl;
+            cout << "dias o planes especiales en UTVT estacionamiento tenemos la mejor opcion para usted." << endl;
+            cout << "Su comodidad y seguridad son nuestra prioridad. Gracias por confiar en nosotros" << endl;
+            cout << " " << endl;
         } 
+    
 
     }
 }
 
     
 
-
-/*
-void Limpieza(){
-    ofstream compras;
-    compras.open("listaDeCompras.txt" , ios::app);
-    string producto;
-    if(compras.fail()){
-        cout << "No se pudo abrir el archivo" << endl;
-        exit(1);
-    }
-    cin.ignore(); 
-    cout << "Ingresa el producto que quieres comprar" << endl;
-    getline(cin,producto);
-    compras << producto;
-    compras.close();
-}
-
-*/
