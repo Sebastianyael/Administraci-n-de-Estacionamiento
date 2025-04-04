@@ -401,9 +401,6 @@ void GasolinaRegular(int ancho = 1){
     cout << string(ancho * 30 , '-') << endl;
     cout << "1) " << "23 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litro de gasolina REGULAR" << endl;
     cout << "2) " << "46 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litro de gasolina REGULAR" << endl;
-    cout << "3) " << "69 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litro de gasolina REGULAR" << endl;
-    cout << "4) " << "92 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litro de gasolina REGULAR" << endl;
-    cout << "5) " << "115 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litro de gasolina REGULAR" << endl;
     cout << string(ancho * 5 , ' ') << endl;
 
 }
@@ -413,9 +410,6 @@ void GasolinaPremium(int ancho = 1){
     cout << string(ancho * 30 , '-') << endl;
     cout << "1) " << "26 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litro de gasolina PREMIUM" << endl;
     cout << "2) " << "52 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litro de gasolina PREMIUM" << endl;
-    cout << "3) " << "78 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litro de gasolina PREMIUM" << endl;
-    cout << "4) " << "104 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litro de gasolina PREMIUM" << endl;
-    cout << "4) " << "130 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litro de gasolina PREMIUM" << endl;
     cout << string(ancho * 5 , ' ') << endl;
 
 }
@@ -425,9 +419,6 @@ void GasolinaDiesel(int ancho = 1){
     cout << string(ancho * 30 , '-') << endl;
     cout << "1) " << "27 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "1 litros de gasolina DIESEL" << endl;
     cout << "2) " << "54 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "2 litros de gasolina DIESEL" << endl;
-    cout << "3) " << "81 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "3 litros de gasolina DIESEL" << endl;
-    cout << "4) " << "108 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "4 litros de gasolina DIESEL" << endl;
-    cout << "4) " << "135 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << "5 litros de gasolina DIESEL" << endl;
     cout << string(ancho * 5 , ' ') << endl;
 
 
@@ -438,7 +429,6 @@ void ReservacionSa(int ancho = 1){
     cout << string(ancho * 30 , '-') << endl;
     cout << "1) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio estandar" << endl;
     cout << "2) " << "100 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con cargador EV" << endl;
-    cout << "3) " << "110 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con lugar rotativo" << endl;
     cout << string(ancho * 5 , ' ') << endl;
 
 
@@ -449,7 +439,6 @@ void ReservacionDo(int ancho = 1){
     cout << string(ancho * 30 , '-') << endl;
     cout << "1) " << "50 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio estandar" << endl;
     cout << "2) " << "100 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con cargador EV" << endl;
-    cout << "3) " << "110 MXN" << string(ancho * 1 , '|') << string(ancho * 1 , ' ') << " Espacio con lugar rotativo" << endl;
     cout << string(ancho * 5 , ' ') << endl;
 
 }
@@ -1514,6 +1503,7 @@ int main(){
                 }
                 
                 }
+            }
     
                 
                
@@ -2502,246 +2492,904 @@ int main(){
                                 h.close();  
                                 total = 0;
                                 cuotatotal = 0;
+                            }
+                        }
+                
+                    }
+                
+                }
+
+            }else if(opcion == 3){
+                cout << "1) Energia" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "2) Parking" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "3) Ecorecarga" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "4) Reservacion" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "5) Asistencia" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "6) Resguardo seguros de llaves" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "0) Volver al menu principal:" << endl;
+                cout << string(ancho * 25, '-') << endl;
+                cout << "Elige una opcion" << endl;
+                cin >> servicio;
+    
+                if(servicio != 0){
+                    if( servicio == 1 ){
+                        cout << string(ancho * 40, '-') << endl;
+                        cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Basica del coche." << endl;
+                        cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Media del coche." << endl;
+                        cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Alta del coche." << endl;
+                        cout << CYAN << "0)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Volver al menu principal" << endl;
+                        cout << string(ancho * 40, '-') << endl;
+                        cout << "Que servicio deseas adquirir?" << endl;
+                        cin >> servi;
+    
+                        com.open("listaDeCompras.txt" , ios::app);
+                        com << "Servicioos adquiridos" << endl;
+                        com.close();
+    
+                        if(servi == 1){
+                            map<int, double> carga;
+                            carga[1] = 90;
+                            carga[2] = 180;
+                            CargaBasica();
+                            
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "90MXN CARGA 50% por 6 horas" << total << endl;
+                                com.close();
+    
+                                total = total + 90;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "180MXN carga 100% por 12 horas" << total << endl;
+                                com.close();
+    
+                                total = total + 180;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+
+
+    
+            
+                        }else if(servi == 2){
+                            map<int , double> carga;
+                            carga[1] = 180;
+                            carga[2] = 360;
+                            CargaMedia();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "180MXN CARGA 50% por 4 horas" << total << endl;
+                                com.close();
+    
+                                total = total + 180;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "360MXN carga 100% por 8 horas" << total << endl;
+                                com.close();
+    
+                                total = total + 360;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                            
+            
+                        }else if(servi == 3){
+                            map <int , double> carga;
+                            carga[1] = 250;
+                            carga[2] = 500;
+                            CargaAlta();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "250MXN CARGA 50% por 30 minutos" << total << endl;
+                                com.close();
+    
+                                total = total + 90;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "500MXN carga 100% por 1 horas" << total << endl;
+                                com.close();
+    
+                                total = total + 180;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                        }
+            
+                    }else if(servicio == 2){
+                        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Cercano o lejano" << endl;
+                        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Nocturno" << endl;
+                        cout << "¿Que servicio deseas adquirir?" << endl;
+                        cin >> servi;
+                         
+                        if(servi ==1){
+                            map<int, double> cercano;
+                            cercano[1] = 60;
+                            cercano[2] = 150;
+                            AparcarmientoExpress();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "60MXN Servicio de valet parking" << total << endl;
+                                com.close();
+    
+                                total = total + 60;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "150MXN servicio de valet parking" << total << endl;
+                                com.close();
+    
+                                total = total + 150;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+            
+                        }else if(servi == 2){
+                            map <int , double> carga;
+                            carga[1] = 100;
+                            carga[2] = 200;
+                            AparcamientoDos();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "100MXN Servicio de valet parking nocturno - 6 PM a 12 PM" << total << endl;
+                                com.close();
+    
+                                total = total + 100;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "200MXN Servicio de valet parking nocturno - 6 PM a 6 AM" << total << endl;
+                                com.close();
+    
+                                total = total + 200;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                        }
+    
+                     
+        
+                    
+        
+                }else if(servicio == 3){
+                    cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina REGULAR hasta 2 litros" << endl;
+                    cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina PREMIUM hasta 2 litros" << endl;
+                    cout << CYAN << "3)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina DIESEL hasta 2 litros" << endl;
+                    cout << "¿Que servicio deseas adquirir?" << endl;
+                    cin >> servicio;
+                 
+                    if(servicio == 1){
+                        map<int, double> litro;
+                        litro[1] = 23;
+                        litro[2] = 46;
+                        GasolinaRegular();
+                        cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "23MXN 1lt de gasolina regular" << total << endl;
+                                com.close();
+    
+                                total = total + 23;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "46MXN 2lt de gasolina regular" << total << endl;
+                                com.close();
+    
+                                total = total + 46;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                             cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+        
+                    }else if(servicio == 2){
+                        map<int, double> litro;
+                        litro[1] = 26;
+                        litro[2] = 52;
+                        GasolinaPremium();
+                        cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "26MXN 1 litro de gasolina PREMIUM" << total << endl;
+                                com.close();
+    
+                                total = total + 26;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "52MXN 1 litro de gasolina PREMIUM" << total << endl;
+                                com.close();
+    
+                                total = total + 52;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+        
+                    }else if(servicio == 3){
+                        map<int, double> litro;
+                        litro[1] = 27;
+                        litro[2] = 54;
+                        GasolinaDiesel();
+                        cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "27MXN 1 litro de gasolina DIESEL" << total << endl;
+                                com.close();
+    
+                                total = total + 27;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "54MXN 1 litro de gasolina DIESEL" << total << endl;
+                                com.close();
+    
+                                total = total + 54;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
                         }
                         
                     }
-                    
-                }
-
-        }
-    
-    
-            //Aqui termina la seccion de productos
-    
-    
-            //Aqui enpieza la seccion de servicios
-    
-        }else if(opcion == 3){
-            cout << "1) Energia" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "2) Parking" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "3) Ecorecarga" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "4) Reservacion" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "5) Asistencia" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "6) Resguardo seguros de llaves" << endl;
-            cout << string(ancho * 25, '-') << endl;
-            cout << "Elige una opcion" << endl;
-            cin >> servicio;
-    
-            if( servicio == 1 ){
-                cout << string(ancho * 40, '-') << endl;
-                cout << CYAN << "1)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Basica del coche." << endl;
-                cout << CYAN << "2)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Media del coche." << endl;
-                cout << CYAN << "3)" << RESET << string(ancho *2 ,  ' ') <<  string(ancho*1 , '|' ) << "Carga Alta del coche." << endl;
-                cout << string(ancho * 40, '-') << endl;
-                cout << "Que servicio deseas adquirir?" << endl;
-                cin >> servi;
-                if(servi == 1){
-                    map<int, double> carga;
-                    carga[1] = 90;
-                    carga[2] = 180;
-                    CargaBasica();
-                    total = cobro(carga , total , cuotatotal);
-                    cout << total  << endl;
-    
-                }else if(servi == 2){
-                    map<int , double> carga;
-                    carga[1] = 180;
-                    carga[2] = 360;
-                    CargaMedia();
-                    total = cobro(carga , total , cuotatotal);
-                    cout << total << endl;
-    
-                }else if(servi == 3){
-                    map <int , double> carga;
-                    carga[1] = 250;
-                    carga[2] = 500;
-                    CargaAlta();
-                    total = cobro(carga , total , cuotatotal);
-                    cout << total << endl;
-                }
-    
-            }else if(servicio == 2){
-                cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Cercano o lejano" << endl;
-                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Parking Nocturno" << endl;
-                cout << "¿Que servicio deseas adquirir?" << endl;
-                cin >> servicio;
+        
+        
+                }else if(servicio == 4){
+                    cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Sabado" << endl;
+                    cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Domingo" << endl;
+                    cout << "¿Que servicio deseas adquirir?" << endl;
+                    cin >> servi;
                  
-                if(servi ==1){
-                    map<int, double> cercano;
-                    cercano[1] = 60;
-                    cercano[2] = 150;
-                    AparcarmientoExpress();
-                    total = cobro(cercano, total , cuotatotal);
-                    cout << total << endl;
+                    if(servi == 1){
+                        map<int, double> reserva;
+                        reserva[1] = 50;
+                        reserva[2] = 100;
+                        ReservacionSa();
+                        cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "50MXN Espacion Estandar" << total << endl;
+                                com.close();
     
-                }else if(servi == 2){
-                    map <int , double> carga;
-                    carga[1] = 100;
-                    carga[2] = 200;
-                    AparcamientoDos();
-                    total = cobro(carga , total , cuotatotal);
-                    cout << total << endl;
-            }
-            }
-             
-
-            
-
-    }else if(servicio == 3){
-        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina REGULAR hasta 5 litros" << endl;
-        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina PREMIUM hasta 5 litros" << endl;
-        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Recarga de gasolina DIESEL hasta 5 litros" << endl;
-        cout << "¿Que servicio deseas adquirir?" << endl;
-        cin >> servicio;
-         
-        if(servi == 1){
-            map<int, double> litro;
-            litro[1] = 23;
-            litro[2] = 46;
-            litro[3] = 69;
-            litro[4] = 92;
-            litro[5] = 115;
-            GasolinaRegular();
-            total = cobro(litro, total , cuotatotal);
-            cout << total << endl;
-
-        }else if(servi == 2){
-            map<int, double> litro;
-            litro[1] = 26;
-            litro[2] = 52;
-            litro[3] = 78;
-            litro[4] = 104;
-            litro[5] = 130;
-            GasolinaPremium();
-            total = cobro(litro, total , cuotatotal);
-            cout << total << endl;
-
-        }else if(servi == 3){
-            map<int, double> litro;
-            litro[1] = 27;
-            litro[2] = 54;
-            litro[3] = 81;
-            litro[4] = 108;
-            litro[5] = 135;
-            GasolinaDiesel();
-            total = cobro(litro, total , cuotatotal);
-            cout << total << endl;
-        }
-
-
-    }else if(servicio == 4){
-        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Sabado" << endl;
-        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Reservación del dia Domingo" << endl;
-        cout << "¿Que servicio deseas adquirir?" << endl;
-        cin >> servicio;
-         
-        if(servi == 1){
-            map<int, double> reserva;
-            reserva[1] = 50;
-            reserva[2] = 100;
-            reserva[3] = 110;
-            ReservacionSa();
-            total = cobro(reserva, total , cuotatotal);
-            cout << total << endl;
-
-                     
-        }else if(servi == 2){
-            map<int, double> reserva;
-            reserva[1] = 50;
-            reserva[2] = 100;
-            reserva[3] = 110;
-            ReservacionDo();
-            total = cobro(reserva, total , cuotatotal);
-            cout << total << endl;
-        }
-
-        }else if(servicio == 5){
-            cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas a Mano" << endl;
-            cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas en carrito" << endl;
-            cout << "¿Que servicio deseas adquirir?" << endl;
-            cin >> servicio;
-             
-            if(servi == 1){
-                map<int, double> bolsa;
-                bolsa[1] = 30;
-                bolsa[2] = 50;
-                BolsasAmano();
-                total = cobro(bolsa, total , cuotatotal);
-                cout << total << endl;
+                                total = total + 26;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "100MXN 1 Espacio con cargador EV " << total << endl;
+                                com.close();
     
-                         
-            }else if(servi == 2){
-                map<int, double> bolsa;
-                bolsa[1] = 50;
-                bolsa[2] = 70;
-                BolsasAcarrito();
-                total = cobro(bolsa, total , cuotatotal);
-                cout << total << endl;
-            }
+                                total = total + 100;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
 
-            }else if(servicio == 6){
-                cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 1 llave" << endl;
-                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 2 llave" << endl;
-                cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Resguardo de 3 o más llave" << endl;
-                cout << "¿Que servicio deseas adquirir?" << endl;
-                cin >> servicio;
-                 
-                if(servi == 1){
-                    map<int, double> llave;
-                    llave[1] = 20;
-                    llave[2] = 30;
-                    llave[2] = 50;
-                    llave[2] = 80;
-                    ResguardoUna();
-                    total = cobro(llave, total , cuotatotal);
-                    cout << total << endl;
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
         
                              
-                }else if(servi == 2){
-                    map<int, double> llave;
-                    llave[1] = 30;
-                    llave[2] = 40;
-                    llave[2] = 60;
-                    llave[2] = 100;
-                    ResguardoDos();
-                    total = cobro(llave, total , cuotatotal);
-                    cout << total << endl;
-
-                }else if(servi == 3){
-                    map<int, double> llave;
-                    llave[1] = 40;
-                    llave[2] = 50;
-                    llave[2] = 70;
-                    llave[2] = 110;
-                    ResguardoTres();
-                    total = cobro(llave, total , cuotatotal);
-                    cout << total << endl;
-                }
-            }
-        }else if(opcion == 4){
-
-            cout << " " << endl;
-            cout << "Bienvenidos al estacionamiento UTVT" << endl;
-            cout << "En UTVT estacionamiento nos especializamos en brindar seguridad comodidad y accesibilidad" << endl;
-            cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
-            cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
-            cout << "objetivo es ofrecer un servicio eficiente y confiable garantizando que su vehiculo este seguro" << endl;
-            cout << "mientras usted realiza sus actividades con total tranquilidad." << endl;
-            cout << "Contamos con amplias instalaciones tecnologia de vigilancia un equipo atento y tarifas competitivas" << endl;
-            cout << "todo establecido para adaptarse a sus necesidades. Ya sea que necesite estacionamiento por horas" << endl;
-            cout << "dias o planes especiales en UTVT estacionamiento tenemos la mejor opcion para usted." << endl;
-            cout << "Su comodidad y seguridad son nuestra prioridad. Gracias por confiar en nosotros" << endl;
-            cout << " " << endl;
-        } 
+                    }else if(servi == 2){
+                        map<int, double> reserva;
+                        reserva[1] = 50;
+                        reserva[2] = 100;
+                        reserva[3] = 110;
+                        ReservacionDo();
+                        cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "50MXN 1 espcacio estandar" << total << endl;
+                                com.close();
     
+                                total = total + 50;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "52MXN 1 espacio con cargador EV" << total << endl;
+                                com.close();
+    
+                                total = total + 100;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
 
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                    }
+        
+                    }else if(servicio == 5){
+                        cout << CYAN << "1)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas a Mano" << endl;
+                        cout << CYAN << "2)" << RESET << string(ancho * 2 , ' ') << string(ancho * 1 , '|') << "Ayuda para cargar bolsas en carrito" << endl;
+                        cout << "¿Que servicio deseas adquirir?" << endl;
+                        cin >> servicio;
+                     
+                        if(servi == 1){
+                            map<int, double> bolsa;
+                            bolsa[1] = 30;
+                            bolsa[2] = 50;
+                            BolsasAmano();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "30MXN carga de 2 bolsas a mano" << total << endl;
+                                com.close();
+    
+                                total = total + 30;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "50MXN carga de 6 bolsas en carrito" << total << endl;
+                                com.close();
+    
+                                total = total + 50;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                    }
+                            
+            
+                                 
+                        }else if(servi == 2){
+                            map<int, double> bolsa;
+                            bolsa[1] = 50;
+                            bolsa[2] = 70;
+                            BolsasAcarrito();
+                            cout << "Que servicio deseas adquirir?" << endl;
+                            cin >> codigo;
+                             if(codigo == 1){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "50MXN 1 espcacio estandar" << total << endl;
+                                com.close();
+    
+                                total = total + 50;
+                             }else if(codigo == 2){
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "70MXN 1 espacio con cargador EV" << total << endl;
+                                com.close();
+    
+                                total = total + 100;
+                             }else{
+                                cout << "opcion no disponible" << endl;
+                             }
+
+
+                            cout << "El total es de: " << total << endl;
+                            cout << "Quieres finalizar tu compra" << endl;
+                            cout << "NOTA al finalizar tu compra se mostrara el monto total de tus compras" << endl;
+                            cin >> eleccion;
+        
+                            if(eleccion == si){
+                                 if(total > 2500){
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "El total a pagar es: " << total << endl;
+                                     com.close();
+
+                                    double descuento = total * 0.20; 
+                                    total -= descuento;
+
+                                    com.open("listaDeCompras.txt" , ios::app);
+                                    com << "Se Aplico un descuento del 20% en compras mayores a 2500" << endl;
+                                    com << "El total a pagar con descuento es: " << total << endl;
+                                    com.close();
+                                    ifstream h("listaDeCompras.txt"); 
+                                    string line;
+                                    while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                    h.close();  
+                                    total = 0;
+                                    cuotatotal = 0;
+                            }else{
+                                com.open("listaDeCompras.txt" , ios::app);
+                                com << "El total a pagar es: " << total << endl;
+                                com.close();
+    
+                                ifstream h("listaDeCompras.txt"); 
+                                string line;
+                                while (getline(h, line)) { 
+                                    cout << line << endl;
+                                }
+                                h.close();  
+                                total = 0;
+                                cuotatotal = 0;
+                            }
+                        }
+                    }
+                }
+        
+               
+            }else if(opcion == 4){
+    
+                cout << " " << endl;
+                cout << "Bienvenidos al estacionamiento UTVT" << endl;
+                cout << "En UTVT estacionamiento nos especializamos en brindar seguridad comodidad y accesibilidad" << endl;
+                cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
+                cout << "para que su experiencia de estacionamiento sea rapida y sin preocupaciones. Nuestro principal" << endl;
+                cout << "objetivo es ofrecer un servicio eficiente y confiable garantizando que su vehiculo este seguro" << endl;
+                cout << "mientras usted realiza sus actividades con total tranquilidad." << endl;
+                cout << "Contamos con amplias instalaciones tecnologia de vigilancia un equipo atento y tarifas competitivas" << endl;
+                cout << "todo establecido para adaptarse a sus necesidades. Ya sea que necesite estacionamiento por horas" << endl;
+                cout << "dias o planes especiales en UTVT estacionamiento tenemos la mejor opcion para usted." << endl;
+                cout << "Su comodidad y seguridad son nuestra prioridad. Gracias por confiar en nosotros" << endl;
+                cout << " " << endl;
+            } 
+            
+        }
     }
-}
 
     
 
